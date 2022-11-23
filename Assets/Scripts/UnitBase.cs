@@ -14,27 +14,36 @@ public class UnitBase : MonoBehaviour
 
     public T AddBehaviour<T>() where T : UnitBehaviour, new()
     {
-        var behaviour = new T();
-        behaviour.ThisUnit = this;
+        var behaviour = new T
+        {
+            ThisUnit = this
+        };
         behaviours.Add(typeof(T), behaviour);
         return behaviour;
     }
 
-    private void Awake()
+    protected virtual void Init()
     {
         behaviours = new Dictionary<Type, UnitBehaviour>();
-        AddBehaviour<PlayerInput>();
-        AddBehaviour<PlayerMove>().Speed = 5;
-        AddBehaviour<PlayerRotate>();
-
+    }
+    protected virtual void Awake()
+    {
+        if(behaviours.Count == 0)
+        {
+            return;
+        }
         foreach (var behaviour in behaviours.Values)
         {
             behaviour.Awake();
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
+        if(behaviours.Count == 0)
+        {
+            return;
+        }
         foreach (var behaviour in behaviours.Values)
         {
             behaviour.Update();

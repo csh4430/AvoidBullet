@@ -1,11 +1,10 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitMove : UnitBehaviour
+public class BulletMove : UnitMove
 {
-    public float Speed { get; set; } = 1;
-
     public override void Awake()
     {
         base.Awake();
@@ -13,11 +12,11 @@ public class UnitMove : UnitBehaviour
 
     public override void Update()
     {
-        Translate();
+        base.Update();
     }
-    
-    protected virtual void Translate()
+
+    protected override void Translate()
     {
-        
+        ThisUnit.transform.Translate(Vector3.forward * (Speed * Time.deltaTime), Space.Self);
     }
 }

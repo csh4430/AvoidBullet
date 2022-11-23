@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : UnitMove
 {
     InputFlags inputFlags => ThisUnit.GetBehaviour<PlayerInput>().inputFlags;
-    public int Speed { get; set; } = 1;
     public override void Awake()
     {
         base.Awake();
