@@ -6,5 +6,6 @@ public class UnitBehaviour
 {
     public UnitBase ThisUnit { get; set; }
     public virtual void Awake(){}
+    public virtual void Start(){}
     public virtual void Update(){}
 }

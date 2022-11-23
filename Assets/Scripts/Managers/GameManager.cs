@@ -1,20 +1,43 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private Dictionary<Type, Manager> managers;
-    public T AddManager<T> () where T : Manager
+    private static GameManager _instance = null;
+    public static GameManager Instance
     {
-        T manager = Manager.Init() as T;
+        get
+        {
+            if (_instance is not null) return _instance;
+            _instance = GameObject.FindObjectOfType<GameManager>() ?? new GameObject("GameManager").AddComponent<GameManager>();
+            return _instance;
+        }
+    }
+    public T AddManager<T> () where T : Manager, new()
+    {
+        var manager = new T();
         managers.Add(typeof(T), manager);
         return manager;
     }
+    
+    public T GetManager<T> () where T : Manager
+    {
+        if (managers.TryGetValue(typeof(T), out var manager))
+        {
+            return manager as T;
+        }
+        return null;
+    }
+    
+    
     private void Awake()
     {
         managers = new Dictionary<Type, Manager>();
-        AddManager<MapManager>();   
+        AddManager<MapManager>();
+        AddManager<PoolManager>();
     }
 }

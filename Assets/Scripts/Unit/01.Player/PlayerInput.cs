@@ -13,6 +13,7 @@ public enum InputFlags
     DownMove = 1 << 3,
     RightTurn = 1 << 4,
     LeftTurn = 1 << 5,
+    Fire = 1 << 6,
     Quit,
 }
 
@@ -79,6 +80,15 @@ public class PlayerInput : UnitBehaviour
         else
         {
             inputFlags &= ~InputFlags.LeftTurn;
+        }
+        
+        if(Input.GetMouseButtonDown(0))
+        {
+            inputFlags |= InputFlags.Fire;
+        }
+        else
+        {
+            inputFlags &= ~InputFlags.Fire;
         }
     }
 }
