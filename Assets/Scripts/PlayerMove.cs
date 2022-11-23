@@ -19,25 +19,25 @@ public class PlayerMove : UnitMove
     protected override void Translate()
     {
         var dir = Vector3.zero;
-        if (inputFlags.HasFlag(InputFlags.Up))
+        if (inputFlags.HasFlag(InputFlags.UpMove))
         {
             dir += Vector3.forward;
         }
-        if (inputFlags.HasFlag(InputFlags.Down))
+        if (inputFlags.HasFlag(InputFlags.DownMove))
         {
             dir += Vector3.back;
         }
-        if (inputFlags.HasFlag(InputFlags.Left))
+        if (inputFlags.HasFlag(InputFlags.LeftMove))
         {
             dir += Vector3.left;
         }
-        if (inputFlags.HasFlag(InputFlags.Right))
+        if (inputFlags.HasFlag(InputFlags.RightMove))
         {
             dir += Vector3.right;
         }
 
         dir = dir.normalized;
 
-        ThisUnit.transform.position += dir * (Time.deltaTime * Speed);
+        ThisUnit.transform.Translate(dir * (Time.deltaTime * Speed), Space.Self);
     }
 }

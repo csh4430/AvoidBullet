@@ -7,13 +7,12 @@ using UnityEngine;
 public enum InputFlags
 {
     None = 0,
-    Left = 1 << 0,
-    Right = 1 << 1,
-    Up = 1 << 2,
-    Down = 1 << 3,
-    Jump = 1 << 4,
-    Attack = 1 << 5,
-    Pause = 1 << 6,
+    LeftMove = 1 << 0,
+    RightMove = 1 << 1,
+    UpMove = 1 << 2,
+    DownMove = 1 << 3,
+    RightTurn = 1 << 4,
+    LeftTurn = 1 << 5,
     Quit,
 }
 
@@ -30,38 +29,56 @@ public class PlayerInput : UnitBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            inputFlags |= InputFlags.Up;
+            inputFlags |= InputFlags.UpMove;
         }
         else
         {
-            inputFlags &= ~InputFlags.Up;
+            inputFlags &= ~InputFlags.UpMove;
         }
         
         if (Input.GetKey(KeyCode.A))
         {
-            inputFlags |= InputFlags.Left;
+            inputFlags |= InputFlags.LeftMove;
         }
         else
         {
-            inputFlags &= ~InputFlags.Left;
+            inputFlags &= ~InputFlags.LeftMove;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            inputFlags |= InputFlags.Down;
+            inputFlags |= InputFlags.DownMove;
         }
         else
         {
-            inputFlags &= ~InputFlags.Down;
+            inputFlags &= ~InputFlags.DownMove;
         }
         
         if (Input.GetKey(KeyCode.D))
         {
-            inputFlags |= InputFlags.Right;
+            inputFlags |= InputFlags.RightMove;
         }
         else
         {
-            inputFlags &= ~InputFlags.Right;
+            inputFlags &= ~InputFlags.RightMove;
+        }
+        
+        if(Input.GetAxisRaw("Mouse X") > 0)
+        {
+            inputFlags |= InputFlags.RightTurn;
+        }
+        else
+        {
+            inputFlags &= ~InputFlags.RightTurn;
+        }
+        
+        if(Input.GetAxisRaw("Mouse X") < 0)
+        {
+            inputFlags |= InputFlags.LeftTurn;
+        }
+        else
+        {
+            inputFlags &= ~InputFlags.LeftTurn;
         }
     }
 }

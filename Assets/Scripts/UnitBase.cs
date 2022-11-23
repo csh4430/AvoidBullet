@@ -25,6 +25,7 @@ public class UnitBase : MonoBehaviour
         behaviours = new Dictionary<Type, UnitBehaviour>();
         AddBehaviour<PlayerInput>();
         AddBehaviour<PlayerMove>().Speed = 5;
+        AddBehaviour<PlayerRotate>();
 
         foreach (var behaviour in behaviours.Values)
         {
