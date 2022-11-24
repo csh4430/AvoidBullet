@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class UnitBase : MonoBehaviour
 {
     private Dictionary<Type, UnitBehaviour> behaviours;
-    [SerializeField] protected UnitStat stat;
-    public UnitStat Stat => stat;
+    [SerializeField] protected UnitState state;
+    public UnitState State => state;
     public T GetBehaviour<T>() where T : UnitBehaviour
     {
         return (T)behaviours[typeof(T)];

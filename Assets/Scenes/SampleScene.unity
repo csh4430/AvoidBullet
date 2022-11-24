@@ -5128,7 +5128,7 @@ MonoBehaviour:
   m_ScreenY: 0.75
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.3
+  m_SoftZoneWidth: 0.5
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
@@ -5249,13 +5249,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e2f4fa51a199d4ba6d4408fff36ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat:
-    <MaxHealth>k__BackingField: 100
-    <Health>k__BackingField: 100
-    <Atk>k__BackingField: 0
-    <Def>k__BackingField: 0
-    <Spd>k__BackingField: 0
-    <Critical>k__BackingField: 0
+  state:
+    <Stat>k__BackingField:
+      <MaxHealth>k__BackingField: 0
+      <Health>k__BackingField: 0
+      <Atk>k__BackingField: 0
+      <Def>k__BackingField: 0
+      <Spd>k__BackingField: 0
+      <Critical>k__BackingField: 0
 --- !u!54 &549566704
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5533,7 +5534,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2495172, y: 0.00000003101175, z: -0.0000000079907085, w: 0.9683704}
+  m_LocalRotation: {x: 0.24951719, y: -0.000000023259291, z: 0.000000005993154, w: 0.9683704}
   m_LocalPosition: {x: 0, y: 10.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5870,7 +5871,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169930904}
-  m_LocalRotation: {x: 0.000000014901161, y: 0.000000038299312, z: -0.000000021140512, w: 1}
+  m_LocalRotation: {x: -0, y: -0.000000010894393, z: 0.0000000060135026, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5926,13 +5927,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d16be7d5c11364883aa17bd3806e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat:
-    <MaxHealth>k__BackingField: 0
-    <Health>k__BackingField: 0
-    <Atk>k__BackingField: 0
-    <Def>k__BackingField: 0
-    <Spd>k__BackingField: 0
-    <Critical>k__BackingField: 0
+  state:
+    <Stat>k__BackingField:
+      <MaxHealth>k__BackingField: 0
+      <Health>k__BackingField: 0
+      <Atk>k__BackingField: 0
+      <Def>k__BackingField: 0
+      <Spd>k__BackingField: 0
+      <Critical>k__BackingField: 0
   _bulletPrefab: {fileID: 6251347177456108700, guid: ba92b61b03be35a4b8b348caa958ff20, type: 3}
 --- !u!65 &1302169052
 BoxCollider:

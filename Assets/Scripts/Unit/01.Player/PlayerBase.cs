@@ -9,9 +9,12 @@ public class PlayerBase : UnitBase
     protected override void Awake()
     {
         base.Init();
+        state = AddBehaviour<UnitState>();
+        state.Stat.Spd = 5f;
+        
         AddBehaviour<PlayerInput>();
-        AddBehaviour<PlayerMove>().Speed = stat.Spd;
-        AddBehaviour<PlayerRotate>();
+        AddBehaviour<PlayerMove>().Speed = State.Stat.Spd;
+        AddBehaviour<PlayerRotate>().RotateSpeed = 100f;
         AddBehaviour<PlayerAttack>().projectilePrefab = _bulletPrefab;
         base.Awake();
     }

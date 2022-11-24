@@ -20,12 +20,12 @@ public class PlayerRotate : UnitRotate
     {
         if(inputFlags.HasFlag(InputFlags.RightTurn))
         {
-            ThisUnit.transform.Rotate(0, 45 * Time.deltaTime, 0);
+            ThisUnit.transform.Rotate(0, RotateSpeed * Time.deltaTime, 0);
         }
         
         if(inputFlags.HasFlag(InputFlags.LeftTurn))
         {
-            ThisUnit.transform.Rotate(0, -45 * Time.deltaTime, 0);
+            ThisUnit.transform.Rotate(0, -RotateSpeed * Time.deltaTime, 0);
         }
     }
 }

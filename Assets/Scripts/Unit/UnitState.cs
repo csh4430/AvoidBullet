@@ -14,8 +14,11 @@ public enum StateEnum
     LevelUp = 1 << 4,
 }
 
+[Serializable]
 public class UnitState : UnitBehaviour
 {
+    [field : SerializeField]
+    public UnitStat Stat { get; private set; } = new UnitStat();
     public StateEnum NowState { get; private set; }
     
     public void SetState(StateEnum state)

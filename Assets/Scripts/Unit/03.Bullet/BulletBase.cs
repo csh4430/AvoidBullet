@@ -37,11 +37,14 @@ public class BulletBase : UnitBase
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        var theUnit = collision.gameObject.GetComponent<UnitBase>();
-        if (theUnit is null) return;
-        theUnit.Stat.Health -= 10;
-        GameManager.Instance.GetManager<PoolManager>().EnqueueObject(gameObject);
+        var theUnit = other.GetComponent<UnitBase>();
+        if (theUnit != null)
+        {
+            theUnit.State.Stat.Health -= 10;
+            LifeTime = _lifeTime;
+            GameManager.Instance.GetManager<PoolManager>().EnqueueObject(gameObject);
+        }
     }
 }

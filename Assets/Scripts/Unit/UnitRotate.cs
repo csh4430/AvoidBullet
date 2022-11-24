@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitRotate : UnitBehaviour
 {
+    public float RotateSpeed { get; set; } = 45;
     public override void Awake()
     {
         base.Awake();
