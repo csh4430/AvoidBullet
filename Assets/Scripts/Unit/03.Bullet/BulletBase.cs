@@ -7,6 +7,7 @@ using UnityEngine;
 public class BulletBase : UnitBase
 {
     public float LifeTime { get; set; } = 3f;
+    public float Damage { get; set; } = 1f;
     private float _lifeTime = 3f;
 
     protected override void Init()
@@ -41,12 +42,10 @@ public class BulletBase : UnitBase
     private void OnTriggerEnter(Collider other)
     {
         var theUnit = other.GetComponent<UnitBase>();
-        if (theUnit != null)
-        {
-            theUnit.State.Damage(10);
-            LifeTime = _lifeTime;
-            GameManager.Instance.GetManager<PoolManager>().EnqueueObject(gameObject);
-        }
+        if (theUnit == null) return;
+        theUnit.State.Damage(Damage);
+        LifeTime = _lifeTime;
+        GameManager.Instance.GetManager<PoolManager>().EnqueueObject(gameObject);
     }
     
     public void SetBulletDir(Vector3 dir)

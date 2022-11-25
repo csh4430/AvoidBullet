@@ -29,8 +29,11 @@ public class PlayerAttack : UnitAttack
     {
         if (inputFlags.HasFlag(InputFlags.Fire))
         {
-            var bullet = poolMgr.ReuseObject(projectilePrefab, ThisUnit.transform);
-            bullet.transform.SetParent(null);
+            var bulletObj = poolMgr.ReuseObject(projectilePrefab, ThisUnit.transform);
+            bulletObj.transform.SetParent(null);
+            var bullet = bulletObj.GetComponent<BulletBase>();
+            bullet.Damage = ThisUnit.State.Stat.Atk;
+
         }
     }
 }

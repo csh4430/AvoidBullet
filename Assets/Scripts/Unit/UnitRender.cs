@@ -28,7 +28,7 @@ public class UnitRender : UnitBehaviour
     public override void Start()
     {
         base.Start();
-        GameManager.Instance.GetManager<PoolManager>().CreatePool(DeathParticle, 5);
+        //GameManager.Instance.GetManager<PoolManager>().CreatePool(DeathParticle, 5);
     }
 
     public override void Update()
