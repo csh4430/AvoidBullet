@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BulletMove : UnitMove
 {
+    public Vector3 dir { get; set; } = Vector3.forward;
     public override void Awake()
     {
         base.Awake();
@@ -17,6 +18,6 @@ public class BulletMove : UnitMove
 
     protected override void Translate()
     {
-        ThisUnit.transform.Translate(Vector3.forward * (Speed * Time.deltaTime), Space.Self);
+        ThisUnit.transform.Translate(dir.normalized * (Speed * Time.deltaTime), Space.Self);
     }
 }

@@ -15,7 +15,7 @@ public class PlayerBase : UnitBase
         AddBehaviour<PlayerInput>();
         AddBehaviour<PlayerMove>().Speed = State.Stat.Spd;
         AddBehaviour<PlayerRotate>().RotateSpeed = 100f;
-        AddBehaviour<PlayerAttack>().projectilePrefab = _bulletPrefab;
+        AddBehaviour<PlayerAttack>().projectilePrefab = _bulletPrefab;  
         base.Awake();
     }
 

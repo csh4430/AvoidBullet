@@ -38,11 +38,13 @@ public class PoolManager : Manager
             objectToReuse.transform.position = position;
             objectToReuse.transform.rotation = rotation;
             objectToReuse.name = poolKey;
+            objectToReuse.transform.SetParent(null);
             return objectToReuse;
         }
         else
         {
-            return null;
+            CreatePool(prefab, 5);
+            return ReuseObject(prefab, position, rotation);
         }
     }
     
@@ -70,6 +72,11 @@ public class PoolManager : Manager
         {
             obj.SetActive(false);
             poolDictionary[poolKey].Enqueue(obj);
+        }
+        else
+        {
+            CreatePool(obj, 5);
+            EnqueueObject(obj);
         }
     }
     

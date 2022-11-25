@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 [Flags]
@@ -19,8 +20,29 @@ public class UnitState : UnitBehaviour
 {
     [field : SerializeField]
     public UnitStat Stat { get; private set; } = new UnitStat();
+    [field : SerializeField]
     public StateEnum NowState { get; private set; }
+
+    public void Damage(float value)
+    {
+        if (NowState.HasFlag(StateEnum.Damage)) return;
+        if (NowState.HasFlag(StateEnum.Death)) return;
+        Stat.Health -= value;
+        SetState(StateEnum.Damage);
+        
+        if(Stat.Health <= 0)
+        {
+            Stat.Health = 0;
+            RemoveState(StateEnum.Damage);
+            Die();
+        }
+    }
     
+    public void Die()
+    {
+        if (NowState.HasFlag(StateEnum.Death)) return;
+        SetState(StateEnum.Death);
+    }
     public void SetState(StateEnum state)
     {
         NowState |= state;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletBase : UnitBase
@@ -42,9 +43,14 @@ public class BulletBase : UnitBase
         var theUnit = other.GetComponent<UnitBase>();
         if (theUnit != null)
         {
-            theUnit.State.Stat.Health -= 10;
+            theUnit.State.Damage(10);
             LifeTime = _lifeTime;
             GameManager.Instance.GetManager<PoolManager>().EnqueueObject(gameObject);
         }
+    }
+    
+    public void SetBulletDir(Vector3 dir)
+    {
+        GetBehaviour<BulletMove>().dir = dir;
     }
 }
