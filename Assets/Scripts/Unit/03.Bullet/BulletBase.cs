@@ -19,7 +19,9 @@ public class BulletBase : UnitBase
     protected override void Awake()
     {
         base.Init();
-        AddBehaviour<BulletMove>().Speed = 10f;
+        var move = AddBehaviour<BulletMove>();
+        move.Speed = 10;
+        
         base.Awake();
     }
 
@@ -50,6 +52,11 @@ public class BulletBase : UnitBase
     
     public void SetBulletDir(Vector3 dir)
     {
-        GetBehaviour<BulletMove>().dir = dir;
+        GetBehaviour<BulletMove>().Dir = dir;
+    }
+    
+    public void SetBulletTarget(GameObject target)
+    {
+        GetBehaviour<BulletMove>().Target = target;
     }
 }

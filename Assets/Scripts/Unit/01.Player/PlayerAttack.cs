@@ -33,7 +33,6 @@ public class PlayerAttack : UnitAttack
             bulletObj.transform.SetParent(null);
             var bullet = bulletObj.GetComponent<BulletBase>();
             bullet.Damage = ThisUnit.State.Stat.Atk;
-
         }
     }
 }
