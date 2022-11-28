@@ -8,6 +8,8 @@ public enum AttackType
 {
     Circle,
     Wave,
+    Sector,
+    
 }
 
 public class EnemyAttack : UnitAttack
@@ -28,20 +30,31 @@ public class EnemyAttack : UnitAttack
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            attackType = AttackType.Circle;
-            Attack();
-        }
     }
 
     public override void Attack()
     { 
-        ThisUnit.StartCoroutine(CircleAttack(sphereBullet, 20, 1, 0.3f, 10));
+        
     }
-
-    //divide circle into n parts and shoot n bullets
-    IEnumerator WaveAttack(GameObject prefab, int n, float radius, float delay, int times)
+    
+    protected void Attack(AttackType attackType, GameObject prefab, int n, float radius, float delay, int times, GameObject target = null, float angle = 0f)
+    {
+        this.attackType = attackType;
+        switch (attackType)
+        {
+            case AttackType.Circle:
+                ThisUnit.StartCoroutine(CircleAttack(prefab, n, radius, delay, times));
+                break;
+            case AttackType.Wave:
+                ThisUnit.StartCoroutine(WaveAttack(prefab, n, radius, delay, times));
+                break;
+            case AttackType.Sector:
+                ThisUnit.StartCoroutine(SectorAttack(prefab, target, n, radius, angle, delay, times));
+                break;
+        }
+    }
+    
+    protected IEnumerator WaveAttack(GameObject prefab, int n, float radius, float delay, int times)
     {
         int tmp = n;
         for (var t = 0; t < times; t++)
@@ -58,7 +71,8 @@ public class EnemyAttack : UnitAttack
             }
         }
     }
-    IEnumerator CircleAttack(GameObject prefab, int n, float radius, float delay, int times)
+
+    protected IEnumerator CircleAttack(GameObject prefab, int n, float radius, float delay, int times)
     {
         int tmp = n;
         float offset;
@@ -72,6 +86,23 @@ public class EnemyAttack : UnitAttack
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 bullet.SetBulletDir(pos);
+                bullet.Damage = ThisUnit.State.Stat.Atk;
+            }
+            yield return new WaitForSeconds(delay);
+        }
+    }
+    protected IEnumerator SectorAttack(GameObject prefab, GameObject target, int n, float radius, float angle, float delay, int times)
+    {
+        int tmp = n;
+        for (var t = 0; t < times; t++)
+        {
+            var pos = Quaternion.Euler(0, angle / 2, 0) * (target.transform.position - ThisUnit.transform.position).normalized;
+            for (var i = 0; i < n; i++)
+            {
+                var dir = Quaternion.Euler(0, -angle * i / (n), 0) * pos * radius;
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
+                var bullet = bulletObj.GetComponent<BulletBase>();
+                bullet.SetBulletDir(dir);
                 bullet.Damage = ThisUnit.State.Stat.Atk;
             }
             yield return new WaitForSeconds(delay);

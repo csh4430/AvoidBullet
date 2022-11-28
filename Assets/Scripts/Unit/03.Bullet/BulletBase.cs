@@ -43,6 +43,8 @@ public class BulletBase : UnitBase
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag(gameObject.tag))
+            return;
         var theUnit = other.GetComponent<UnitBase>();
         if (theUnit == null) return;
         theUnit.State.Damage(Damage);

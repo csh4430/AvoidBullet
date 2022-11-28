@@ -22,7 +22,7 @@ public class UnitRender : UnitBehaviour
         mainMaterial = ThisUnit.transform.Find("Model").GetComponent<MeshRenderer>().material;
         outlineMaterial = ThisUnit.transform.Find("Model/Outline").GetComponent<MeshRenderer>().material;
         light = ThisUnit.transform.Find("Model/Light").GetComponent<Light>();
-        originalColor = outlineMaterial.color;
+        originalColor = outlineMaterial.color;  
     }
 
     public override void Start()

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 670706327142991903}
   m_Layer: 7
   m_Name: Enemy Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
       <Def>k__BackingField: 0
       <Spd>k__BackingField: 0
       <Critical>k__BackingField: 0
+    <NowState>k__BackingField: 0
 --- !u!135 &-3533328557501340593
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5144,7 +5145,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 55
