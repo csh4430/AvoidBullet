@@ -13,6 +13,7 @@ public class UnitRender : UnitBehaviour
     private Material outlineMaterial;
     private Light light;
     private Color originalColor;
+    private Color originalLight;
 
     private bool isInCoroutine = false;
     private bool isDead = false;
@@ -23,6 +24,7 @@ public class UnitRender : UnitBehaviour
         outlineMaterial = ThisUnit.transform.Find("Model/Outline").GetComponent<MeshRenderer>().material;
         light = ThisUnit.transform.Find("Model/Light").GetComponent<Light>();
         originalColor = outlineMaterial.color;  
+        originalLight = light.color;
     }
 
     public override void Start()
@@ -44,7 +46,7 @@ public class UnitRender : UnitBehaviour
 
         isInCoroutine = true;
         float percentage = state.Stat.Health / state.Stat.MaxHealth;
-        ThisUnit.StartCoroutine(SwitchColorCoroutine(originalColor, percentage, Color.white, 0.3f, 0.2f,
+        ThisUnit.StartCoroutine(SwitchColorCoroutine(originalColor, originalLight, percentage, Color.white, Color.white, 0.3f, 0.2f,
             () =>
             {
                 isInCoroutine = false;
@@ -58,21 +60,21 @@ public class UnitRender : UnitBehaviour
         GameManager.Instance.GetManager<PoolManager>().EnqueueObject(ThisUnit.gameObject);
 
     }
-    IEnumerator SwitchColorCoroutine(Color original, float alpha1, Color next, float alpha2, float time, Action callback = null)
+    IEnumerator SwitchColorCoroutine(Color originalColor, Color originalLight, float alpha1, Color nextColor, Color nextLight, float alpha2, float time, Action callback = null)
     {
-        SetColor(next, alpha2);
+        SetColor(nextColor, nextLight, alpha2);
         yield return new WaitForSeconds(time);
-        SetColor(original, alpha1);
+        SetColor(originalColor, originalLight, alpha1);
         callback?.Invoke();
     }
     
-    private void SetColor(Color color, float alpha)
+    private void SetColor(Color color, Color lightColor, float alpha)
 
     {
         color.a = alpha;
         outlineMaterial.color = color;
         outlineMaterial.SetFloat("_Alpha", alpha);
-        light.color = color;
+        light.color = lightColor;
         light.intensity = alpha;    
     }
 }

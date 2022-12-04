@@ -56,7 +56,6 @@ public class EnemyAttack : UnitAttack
     
     protected IEnumerator WaveAttack(GameObject prefab, int n, float radius, float delay, int times)
     {
-        int tmp = n;
         for (var t = 0; t < times; t++)
         {
             for (var i = 0; i < n; i++)
@@ -74,7 +73,6 @@ public class EnemyAttack : UnitAttack
 
     protected IEnumerator CircleAttack(GameObject prefab, int n, float radius, float delay, int times)
     {
-        int tmp = n;
         float offset;
         for (var t = 0; t < times; t++)
         {
@@ -93,13 +91,13 @@ public class EnemyAttack : UnitAttack
     }
     protected IEnumerator SectorAttack(GameObject prefab, GameObject target, int n, float radius, float angle, float delay, int times)
     {
-        int tmp = n;
         for (var t = 0; t < times; t++)
         {
-            var pos = Quaternion.Euler(0, angle / 2, 0) * (target.transform.position - ThisUnit.transform.position).normalized;
+            var offset = n % 2 == 0 ? 0 : 0.5f;
+            var pos = (Quaternion.Euler(0, angle / 2, 0) * (target.transform.position - ThisUnit.transform.position)).normalized;
             for (var i = 0; i < n; i++)
             {
-                var dir = Quaternion.Euler(0, -angle * i / (n), 0) * pos * radius;
+                var dir = Quaternion.Euler(0, -angle * (i + offset) / n, 0) * pos * radius;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 bullet.SetBulletDir(dir);

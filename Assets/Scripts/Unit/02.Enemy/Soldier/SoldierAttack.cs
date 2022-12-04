@@ -30,8 +30,8 @@ public class SoldierAttack : EnemyAttack
         currentTime += Time.deltaTime;
         if (currentTime >= Delay)
         {
-            currentTime = 0f;
-            Attack(AttackType.Sector, sphereBullet, 20, 1, 0, 1, GameObject.Find("Player"), 30);
+            currentTime = 0f; 
+            Attack(AttackType.Sector, sphereBullet, 4, 1, 0, 1, GameObject.Find("Player_1"), 60);
         }
     }
 }

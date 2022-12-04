@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerBase : UnitBase
 {
     [SerializeField] private GameObject _bulletPrefab;
+    [field: SerializeField] public bool IsFirstPlayer { get; set; } = true;
+
     protected override void Awake()
     {
         base.Init();

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineMat
+  m_Name: EnemyOutlineMat
   m_Shader: {fileID: -6465566751694194690, guid: ef40630931714de44b4d56691e9dff83, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -49,11 +49,10 @@ Material:
     m_Floats:
     - _Alpha: 1
     - _Intensity: 2
-    - _Nosie: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: -1.2
     m_Colors:
-    - _Color: {r: 0, g: 0.076420784, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0.13333334, b: 1.4980392, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1.4980392, g: 0, b: 0.13333334, a: 1}
   m_BuildTextureStacks: []
