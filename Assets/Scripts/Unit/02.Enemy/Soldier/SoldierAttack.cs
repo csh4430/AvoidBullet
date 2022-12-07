@@ -25,13 +25,15 @@ public class  SoldierAttack : EnemyAttack
         Attack();
     }
 
+    private int i = 0;
     public override void Attack()
     {
         currentTime += Time.deltaTime;
         if (currentTime >= Delay)
         {
             currentTime = 0f;
-            Attack(AttackType.Spin, Bullets[(int)BulletEnum.Enemy_Player_1], 4, 1, 0f, 1, null, 10f);
+            Attack(AttackType.Spin, Bullets[i], 4, 1, 0f, 1, null, 10f);
+            i = (i + 1) % 2;
         }
     }
 }

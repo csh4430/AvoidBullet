@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1428452646250051912}
   - component: {fileID: 1428452646250051914}
   - component: {fileID: 1428452646250051915}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1428452647082870447}
   - component: {fileID: 1428452647082870441}
   - component: {fileID: 1428452647082870446}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1428452647137009461}
   - component: {fileID: 1428452647137009463}
   - component: {fileID: 1428452647137009460}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Trail Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5078,7 +5078,7 @@ GameObject:
   - component: {fileID: 1428452647181915566}
   - component: {fileID: 1428452647181915560}
   - component: {fileID: 1428452647181915561}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
