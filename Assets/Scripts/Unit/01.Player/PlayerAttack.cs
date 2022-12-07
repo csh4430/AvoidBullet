@@ -17,22 +17,28 @@ public class PlayerAttack : UnitAttack
         base.Start();
         poolMgr = GameManager.Instance.GetManager<PoolManager>();
         poolMgr.CreatePool(projectilePrefab, 5);
+        ThisUnit.StartCoroutine(AutoAttack());
     }
 
     public override void Update()
     {
         base.Update();
-        Attack();
+        //Attack();
     }
 
     public override void Attack()
     {
-        if (inputFlags.HasFlag(InputFlags.Fire))
+
+    }
+    private IEnumerator AutoAttack()
+    {
+        while (true)
         {
             var bulletObj = poolMgr.ReuseObject(projectilePrefab, ThisUnit.transform);
             bulletObj.transform.SetParent(null);
             var bullet = bulletObj.GetComponent<BulletBase>();
             bullet.Damage = ThisUnit.State.Stat.Atk;
+            yield return new WaitForSeconds(0.4f);
         }
     }
 }

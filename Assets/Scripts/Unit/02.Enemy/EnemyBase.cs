@@ -13,8 +13,9 @@ public class EnemyBase : UnitBase
         base.Init();
         state = AddBehaviour<UnitState>();
         AddBehaviour<UnitRender>().DeathParticle = deathEffect;
-        state.Stat.MaxHealth = 100;
-        state.Stat.Health = 100;
+        state.Stat.MaxHealth = 200;
+        state.Stat.Health = 200;
+        state.Stat.Atk = 7;
         base.Awake();
     }
 }
