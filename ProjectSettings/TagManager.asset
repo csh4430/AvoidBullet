@@ -15,15 +15,15 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Enemy
-  - Bullet
+  - Player_1
+  - Player_2
+  - 
   - Camera_1
   - Camrea_2
-  - Plain
-  - Plain_Player
-  - Plain_Bullet
-  - 
+  - Bullet_1
+  - Bullet_2
+  - Plane_1
+  - Plane_2
   - 
   - 
   - 
