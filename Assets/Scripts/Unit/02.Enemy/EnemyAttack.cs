@@ -9,14 +9,14 @@ public enum AttackType
     Circle,
     Wave,
     Sector,
-    
+    Spin
 }
 
 public class EnemyAttack : UnitAttack
 {
     AttackType attackType;
-
-    public GameObject sphereBullet { get; set; } = null;
+    
+    public List<GameObject> Bullets = new List<GameObject>(10);
     public override void Awake()
     {
         base.Awake();
@@ -50,6 +50,9 @@ public class EnemyAttack : UnitAttack
                 break;
             case AttackType.Sector:
                 ThisUnit.StartCoroutine(SectorAttack(prefab, target, n, radius, angle, delay, times));
+                break;
+            case AttackType.Spin:
+                ThisUnit.StartCoroutine(SpinAttack(prefab, n, radius, angle, delay, times));
                 break;
         }
     }
@@ -105,5 +108,28 @@ public class EnemyAttack : UnitAttack
             }
             yield return new WaitForSeconds(delay);
         }
+    }
+    
+    Quaternion currentRotation = Quaternion.identity;
+    
+    protected IEnumerator SpinAttack(GameObject prefab, int n, float raidus, float rotateAngle, float delay, int times)
+    {
+        for (var t = 0; t < times; t++)
+        {
+            
+            currentRotation.eulerAngles += new Vector3(0, rotateAngle, 0);
+            for (var i = 0; i < n; i++)
+            {
+                var angle = i * Mathf.PI * 2 / n;
+                var pos = currentRotation * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                var dir = pos * raidus;
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
+                var bullet = bulletObj.GetComponent<BulletBase>();
+                bullet.SetBulletDir(dir);
+                bullet.Damage = ThisUnit.State.Stat.Atk;
+            }
+            yield return new WaitForSeconds(delay);
+        }
+        
     }
 }

@@ -7,7 +7,11 @@ public class SoldierBase : EnemyBase
     protected override void Awake()
     {
         base.Awake();
-        AddBehaviour<SoldierAttack>().sphereBullet = sphereBullet;
+        var attack = AddBehaviour<SoldierAttack>();
+        for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
+        {
+            attack.Bullets.Add(Bullets[(int)e]);
+        }
     }
 
     protected override void Init()

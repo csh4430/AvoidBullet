@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierAttack : EnemyAttack
+public class  SoldierAttack : EnemyAttack
 {
-    public float Delay { get; set; } = 0.5f;
+    public float Delay { get; set; } = 0.2f;
 
     private float currentTime = 0f;
     
@@ -30,8 +30,8 @@ public class SoldierAttack : EnemyAttack
         currentTime += Time.deltaTime;
         if (currentTime >= Delay)
         {
-            currentTime = 0f; 
-            Attack(AttackType.Sector, sphereBullet, 4, 1, 0, 1, GameObject.Find("Player_1"), 60);
+            currentTime = 0f;
+            Attack(AttackType.Spin, Bullets[(int)BulletEnum.Enemy_Player_1], 4, 1, 0f, 1, null, 10f);
         }
     }
 }

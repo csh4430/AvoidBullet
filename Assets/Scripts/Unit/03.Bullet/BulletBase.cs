@@ -4,8 +4,26 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Flags]
+public enum BulletTarget
+{
+    None = 0,
+    Player_1 = 1 << 0,
+    Player_2 = 1 << 1,
+    Enemy = 1 << 2, 
+}
+
+public enum BulletEnum
+{
+    Enemy_Player_1,
+    Enemy_Player_2,
+    Enemy_Everyone,
+    Enemy_Bigger,
+}
+
 public class BulletBase : UnitBase
 {
+    public BulletTarget Target;
     public float LifeTime { get; set; } = 3f;
     public float Damage { get; set; } = 1f;
     private float _lifeTime = 3f;
@@ -46,6 +64,8 @@ public class BulletBase : UnitBase
         if (other.CompareTag(gameObject.tag))
             return;
         var theUnit = other.GetComponent<UnitBase>();
+        if (theUnit != Target)
+            return; 
         if (theUnit == null) return;
         theUnit.State.Damage(Damage);
         LifeTime = _lifeTime;

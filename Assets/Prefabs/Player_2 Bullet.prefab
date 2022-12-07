@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8638998038595454879}
   - component: {fileID: 1521489648842622771}
   m_Layer: 6
-  m_Name: Player Bullet
+  m_Name: Player_2 Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
       <Spd>k__BackingField: 0
       <Critical>k__BackingField: 0
     <NowState>k__BackingField: 0
+  Target: 4
 --- !u!65 &8638998038595454879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96,7 +97,7 @@ GameObject:
   - component: {fileID: 6251347177531189531}
   - component: {fileID: 6251347177531189533}
   - component: {fileID: 6251347177531189530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +309,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.47547162, g: 0.6409248, b: 1, a: 1}
+      maxColor: {r: 0.5372549, g: 1, b: 0.4862745, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4908,7 +4909,7 @@ GameObject:
   - component: {fileID: 6251347178808304618}
   - component: {fileID: 6251347178808304620}
   - component: {fileID: 6251347178808304621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4994,7 +4995,7 @@ GameObject:
   - component: {fileID: 6251347179259068633}
   - component: {fileID: 6251347179259068635}
   - component: {fileID: 6251347179259068632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5077,7 +5078,7 @@ GameObject:
   - component: {fileID: 6251347179278476217}
   - component: {fileID: 6251347179278476219}
   - component: {fileID: 6251347179278476216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5110,7 +5111,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.5062039, b: 1, a: 1}
+  m_Color: {r: 0.5372549, g: 1, b: 0.4862745, a: 1}
   m_Intensity: 0.5
   m_Range: 0.8
   m_SpotAngle: 30
@@ -5148,7 +5149,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 8247
   m_RenderingLayerMask: 1
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -3533328557501340593}
   - component: {fileID: 670706327142991903}
   m_Layer: 7
-  m_Name: Enemy Bullet
+  m_Name: Enemy Bullet(Player1)
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
       <Spd>k__BackingField: 0
       <Critical>k__BackingField: 0
     <NowState>k__BackingField: 0
-  Target: 3
+  Target: 1
 --- !u!135 &-3533328557501340593
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.075696595, b: 0.15596332, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1560,8 +1560,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key0: {r: 0.8117647, g: 0.09411765, b: 0.07058824, a: 1}
+        key1: {r: 0, g: 0.5058824, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

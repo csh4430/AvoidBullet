@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UnitBase : MonoBehaviour
 {
     private Dictionary<Type, UnitBehaviour> behaviours;
-    [SerializeField] protected UnitState state;
+    [SerializeField] protected UnitState state; 
     public UnitState State => state;
     public T GetBehaviour<T>() where T : UnitBehaviour
     {
@@ -61,5 +62,15 @@ public class UnitBase : MonoBehaviour
         {
             behaviour.Update();
         }
+    }
+
+    public static bool operator==(UnitBase thisUnit, BulletTarget target)
+    {
+        return target.HasFlag(Enum.Parse<BulletTarget>(thisUnit.tag));
+    }
+    
+    public static bool operator!=(UnitBase thisUnit, BulletTarget target)
+    {
+        return !(thisUnit == target);
     }
 }
