@@ -9,7 +9,8 @@ public enum AttackType
     Circle,
     Wave,
     Sector,
-    Spin
+    Spin,
+    Ring,
 }
 
 public class EnemyAttack : UnitAttack
@@ -53,6 +54,9 @@ public class EnemyAttack : UnitAttack
                 break;
             case AttackType.Spin:
                 ThisUnit.StartCoroutine(SpinAttack(prefab, n, radius, angle, delay, times));
+                break;
+            case AttackType.Ring:
+                ThisUnit.StartCoroutine(RingAttack(prefab, target, n, radius, delay, times));
                 break;
         }
     }
@@ -131,5 +135,22 @@ public class EnemyAttack : UnitAttack
             yield return new WaitForSeconds(delay);
         }
         
+    }
+    //6개의 탄막이 플레이어를 향해 점점 좁혀옴(돌면서)
+    protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float raidus, float delay, int times)
+    {
+        for (var t = 0; t < times; t++)
+        {
+            for (var i = 0; i < n; i++)
+            {
+                var angle = i * Mathf.PI * 2 / n;
+                var pos = currentRotation * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                var dir = pos * raidus;
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,target.transform.position + dir, Quaternion.identity);
+                var bullet = bulletObj.GetComponent<BulletBase>();
+            }
+
+            yield return new WaitForSeconds(delay);
+        }
     }
 }
