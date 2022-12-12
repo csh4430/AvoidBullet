@@ -71,7 +71,9 @@ public class EnemyAttack : UnitAttack
                 var pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
+                var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(pos);
+                move.Speed = speed;
                 bullet.Damage = ThisUnit.State.Stat.Atk;
                 yield return new WaitForSeconds(delay);
             }
@@ -90,7 +92,7 @@ public class EnemyAttack : UnitAttack
                 var pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
-                var move = bulletObj.GetComponent<BulletMove>();
+                var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(pos);
                 move.Speed = speed;
                 bullet.Damage = ThisUnit.State.Stat.Atk;
@@ -109,7 +111,7 @@ public class EnemyAttack : UnitAttack
                 var dir = Quaternion.Euler(0, -angle * (i + offset) / n, 0) * pos * radius;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
-                var move = bulletObj.GetComponent<BulletMove>();
+                var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(dir);
                 move.Speed = speed;
                 bullet.Damage = ThisUnit.State.Stat.Atk;
@@ -133,7 +135,7 @@ public class EnemyAttack : UnitAttack
                 var dir = pos * raidus;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
                 var bullet = bulletObj.GetComponent<BulletBase>();
-                var move = bulletObj.GetComponent<BulletMove>();
+                var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(dir);
                 move.Speed = speed;
                 bullet.Damage = ThisUnit.State.Stat.Atk;
@@ -154,8 +156,8 @@ public class EnemyAttack : UnitAttack
                 var dir = pos * raidus;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,target.transform.position + dir, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<RingBase>();
-                var move = bulletObj.GetComponent<BulletMove>();
-                bullet.SetBulletDir(dir);
+                var move = bullet.GetBehaviour<BulletMove>();
+                bullet.SetBulletDir(-dir);
                 move.Speed = speed;
                 bullet.Damage = ThisUnit.State.Stat.Atk;
             }
