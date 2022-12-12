@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class  SoldierAttack : EnemyAttack
 {
-    public float Delay { get; set; } = 0.2f;
+    public float Delay { get; set; } = 3f;
 
     private float currentTime = 0f;
     
@@ -32,7 +32,7 @@ public class  SoldierAttack : EnemyAttack
         if (currentTime >= Delay)
         {
             currentTime = 0f;
-            Attack(AttackType.Ring, Bullets[i], 8, 3, 5f, 1, GameObject.Find("Player_1"), 10f);
+            Attack(AttackType.Ring, Bullets[3], 8, 3, 5f, 1, GameObject.Find("Player_1"), 10f);
             i = (i + 1) % 2;
         }
     }

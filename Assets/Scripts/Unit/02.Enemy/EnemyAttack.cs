@@ -147,7 +147,9 @@ public class EnemyAttack : UnitAttack
                 var pos = currentRotation * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 var dir = pos * raidus;
                 var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,target.transform.position + dir, Quaternion.identity);
-                var bullet = bulletObj.GetComponent<BulletBase>();
+                var bullet = bulletObj.GetComponent<RingBase>();
+                bullet.SetBulletDir(dir);
+                bullet.Damage = ThisUnit.State.Stat.Atk;
             }
 
             yield return new WaitForSeconds(delay);
