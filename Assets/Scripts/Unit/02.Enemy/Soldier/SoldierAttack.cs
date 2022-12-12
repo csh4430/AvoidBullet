@@ -32,7 +32,7 @@ public class  SoldierAttack : EnemyAttack
         if (currentTime >= Delay)
         {
             currentTime = 0f;
-            Attack(AttackType.Ring, Bullets[3], 8, 3, 5f, 1, GameObject.Find("Player_1"), 10f);
+            Attack(AttackType.Ring, Bullets[3], 8, 10,3, 5f, 1, GameObject.Find("Player_1"), 10f);
             i = (i + 1) % 2;
         }
     }
