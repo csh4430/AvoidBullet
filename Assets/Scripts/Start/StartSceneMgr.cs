@@ -23,7 +23,7 @@ public class StartSceneMgr : MonoBehaviour
 
     private void Start()
     {
-        _fadeUI.State = FadeState.FADE_IN; 
+        _fadeUI.State = FadeState.FADE_IN;
     }
 
     private void Update()

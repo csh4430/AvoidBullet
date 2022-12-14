@@ -20,13 +20,15 @@ public class FadeUI : UIComponent
         get => state; 
         set => state = value;
     }
+
+    private int sceneIdx = 0;
     
     private UIFading fading;
 
     protected override void Awake()
     {
         fading = AddBehaviour<UIFading>();
-        fading.Duration = 2f;
+        fading.Duration = 1.5f;
         base.Awake();
     }
 
@@ -45,9 +47,14 @@ public class FadeUI : UIComponent
                 state = FadeState.NONE;
                 break;
             case FadeState.FADE_OUT:
-                fading.FadeOut();
+                fading.FadeOut(sceneIdx);
                 break;
         }
         state = FadeState.NONE;
+    }
+    
+    public void SetIndex(int idx)
+    {
+        sceneIdx = idx;
     }
 }
