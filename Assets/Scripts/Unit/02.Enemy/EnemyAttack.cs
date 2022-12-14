@@ -17,7 +17,7 @@ public enum AttackType
 public class EnemyAttack : UnitAttack
 {
     AttackType attackType;
-    
+
     public List<GameObject> Bullets = new List<GameObject>(10);
     public override void Awake()
     {
@@ -28,17 +28,17 @@ public class EnemyAttack : UnitAttack
     {
         base.Start();
     }
-    
+
     public override void Update()
     {
         base.Update();
     }
 
     public override void Attack()
-    { 
-        
+    {
+
     }
-    
+
     protected void Attack(AttackType attackType, GameObject prefab, int n, float speed, float radius, float delay, int times, GameObject target = null, float angle = 0f)
     {
         this.attackType = attackType;
@@ -64,7 +64,7 @@ public class EnemyAttack : UnitAttack
                 break;
         }
     }
-    
+
     protected IEnumerator WaveAttack(GameObject prefab, int n, float speed, float radius, float delay, int times)
     {
         for (var t = 0; t < times; t++)
@@ -73,7 +73,7 @@ public class EnemyAttack : UnitAttack
             {
                 var angle = i * Mathf.PI * 2 / n;
                 var pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity); 
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(pos);
@@ -94,7 +94,7 @@ public class EnemyAttack : UnitAttack
             {
                 var angle = (i * (Mathf.PI * 2) / n) + offset;
                 var pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity); 
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + pos, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(pos);
@@ -113,7 +113,7 @@ public class EnemyAttack : UnitAttack
             for (var i = 0; i < n; i++)
             {
                 var dir = Quaternion.Euler(0, -angle * (i + offset) / n, 0) * pos * radius;
-                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(dir);
@@ -123,21 +123,21 @@ public class EnemyAttack : UnitAttack
             yield return new WaitForSeconds(delay);
         }
     }
-    
+
     Quaternion currentRotation = Quaternion.identity;
-    
+
     protected IEnumerator SpinAttack(GameObject prefab, int n, float speed, float raidus, float rotateAngle, float delay, int times)
     {
         for (var t = 0; t < times; t++)
         {
-            
+
             currentRotation.eulerAngles += new Vector3(0, rotateAngle, 0);
             for (var i = 0; i < n; i++)
             {
                 var angle = i * Mathf.PI * 2 / n;
                 var pos = currentRotation * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 var dir = pos * raidus;
-                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity); 
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position + dir, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(dir);
@@ -146,7 +146,7 @@ public class EnemyAttack : UnitAttack
             }
             yield return new WaitForSeconds(delay);
         }
-        
+
     }
     //6개의 탄막이 플레이어를 향해 점점 좁혀옴
     protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float speed, float raidus, float delay, int times)
@@ -158,7 +158,7 @@ public class EnemyAttack : UnitAttack
                 var angle = i * Mathf.PI * 2 / n;
                 var pos = currentRotation * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 var dir = pos * raidus;
-                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,target.transform.position + dir, Quaternion.identity);
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, target.transform.position + dir, Quaternion.identity);
                 var bullet = bulletObj.GetComponent<BulletBase>();
                 var move = bullet.GetBehaviour<BulletMove>();
                 bullet.SetBulletDir(-dir);
@@ -169,7 +169,7 @@ public class EnemyAttack : UnitAttack
             yield return new WaitForSeconds(delay);
         }
     }
-    protected IEnumerator TargetAttack(GameObject prefab, GameObject target, int n, float speed,float delay, int times)
+    protected IEnumerator TargetAttack(GameObject prefab, GameObject target, int n, float speed, float delay, int times)
     {
         for (var t = 0; t < times; t++)
         {
@@ -185,5 +185,17 @@ public class EnemyAttack : UnitAttack
             yield return new WaitForSeconds(delay);
         }
 
+    }
+
+    protected IEnumerator DashAttack(GameObject prefab, int n, float speed, float delay, int times)
+    {
+        for (var t = 0; t < times; t++)
+        {
+            for (var i = 0; i < n; i++)
+            {
+                var move = ThisUnit.GetComponent<UnitMove>();
+            }
+            yield return new WaitForSeconds(delay);
+        }
     }
 }

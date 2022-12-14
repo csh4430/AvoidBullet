@@ -12,7 +12,7 @@ public enum StateEnum
     Heal = 1 << 1,
     Death = 1 << 2,
     Respawn = 1 << 3,
-    LevelUp = 1 << 4,
+    LevelUp = 1 << 4
 }
 
 [Serializable]
