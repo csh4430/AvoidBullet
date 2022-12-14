@@ -11,6 +11,7 @@ public enum AttackType
     Sector,
     Spin,
     Ring,
+    Target,
 }
 
 public class EnemyAttack : UnitAttack
@@ -57,6 +58,9 @@ public class EnemyAttack : UnitAttack
                 break;
             case AttackType.Ring:
                 ThisUnit.StartCoroutine(RingAttack(prefab, target, n, speed, radius, delay, times));
+                break;
+            case AttackType.Target:
+                ThisUnit.StartCoroutine(TargetAttack(prefab, target, n, speed, delay, times));
                 break;
         }
     }
@@ -144,7 +148,7 @@ public class EnemyAttack : UnitAttack
         }
         
     }
-    //6개의 탄막이 플레이어를 향해 점점 좁혀옴(돌면서)
+    //6개의 탄막이 플레이어를 향해 점점 좁혀옴
     protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float speed, float raidus, float delay, int times)
     {
         for (var t = 0; t < times; t++)
@@ -164,5 +168,22 @@ public class EnemyAttack : UnitAttack
 
             yield return new WaitForSeconds(delay);
         }
+    }
+    protected IEnumerator TargetAttack(GameObject prefab, GameObject target, int n, float speed,float delay, int times)
+    {
+        for (var t = 0; t < times; t++)
+        {
+            for (var i = 0; i < n; i++)
+            {
+                var bulletObj = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab, ThisUnit.transform.position, Quaternion.identity);
+                var bullet = bulletObj.GetComponent<BulletBase>();
+                var move = bullet.GetBehaviour<BulletMove>();
+                move.Speed = speed;
+                move.Target = target;
+                bullet.Damage = ThisUnit.State.Stat.Atk;
+            }
+            yield return new WaitForSeconds(delay);
+        }
+
     }
 }

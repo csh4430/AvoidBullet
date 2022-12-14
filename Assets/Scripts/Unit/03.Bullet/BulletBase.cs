@@ -74,7 +74,7 @@ public class BulletBase : UnitBase
     
     public void SetBulletDir(Vector3 dir)
     {
-        GetBehaviour<BulletMove>().Dir = dir;
+        GetBehaviour<BulletMove>().Dir = dir.normalized;
     }
     
     public void SetBulletTarget(GameObject target)
