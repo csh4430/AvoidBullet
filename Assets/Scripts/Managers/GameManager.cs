@@ -39,5 +39,6 @@ public class GameManager : MonoBehaviour
         managers = new Dictionary<Type, Manager>();
         AddManager<MapManager>();
         AddManager<PoolManager>();
+        AddManager<UIManager>().StayUIMgr.FadeUI.State = FadeState.FADE_IN;
     }
 }

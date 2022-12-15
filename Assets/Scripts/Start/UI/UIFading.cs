@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIFading : UIBehaviour
@@ -17,11 +18,11 @@ public class UIFading : UIBehaviour
 
     public void FadeIn()
     {
-        thisImage.DOFade(0, Duration);
+        thisImage.DOFade(0, Duration).SetEase(Ease.InSine);
     }
     
-    public void FadeOut()
+    public void FadeOut(int sceneIdx)
     {
-        thisImage.DOFade(1, Duration);
+        thisImage.DOFade(1, Duration).SetEase(Ease.OutSine).OnComplete(() => SceneManager.LoadScene(sceneIdx));
     }
 }
