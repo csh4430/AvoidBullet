@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierAttack : EnemyAttack
+public class BossAttack : EnemyAttack
 {
     public float Delay { get; set; } = 1f;
 
@@ -25,14 +25,19 @@ public class SoldierAttack : EnemyAttack
         Attack();
     }
 
-    private int i = 0;
     public override void Attack()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= Delay)
+
+    }
+
+    private int Phase()
+    {
+        int p = ThisUnit.GetComponent<BossBase>().isFinalBoss ? 2 : 3;
+        for (int i = 1; i < p; i++)
         {
-            currentTime = 0f;
-            Attack(AttackType.Circle, Bullets[i], 4, 5, 8, 1f, 1, GameObject.Find("Player_1"), 10f);
+            if (ThisUnit.State.Stat.MaxHealth / p * i == )
+                return i;
         }
+        return -1;
     }
 }
