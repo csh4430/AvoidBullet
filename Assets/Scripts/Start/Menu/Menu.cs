@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Menu
 {
-    public int Idx { get; set; }
+    public bool IsOpen { get; protected set; }
     public StartSceneMgr StartSceneMgr { get; set; }
     public virtual void Interactive() {}
+    public virtual void Deinteractive() {}
+    public virtual void Awake(){}
+    public virtual void Update(){}
 }
