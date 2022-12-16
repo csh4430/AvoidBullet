@@ -17,7 +17,7 @@ public class MenuSetting : Menu
         IsOpen = false;
     }
 
-    public override void Awake()
+    public override void Start()
     {
         _sound = DataManager.LoadJsonFile<SoundVO>($"{Application.dataPath}/Data","Sound");
         
@@ -25,6 +25,7 @@ public class MenuSetting : Menu
         {
             ((SliderUI)points[i]._selectedUI).Value  = _sound.GetVolume(i);
         }
+        SoundManager._Sound = _sound;
         
     }
 
@@ -45,11 +46,13 @@ public class MenuSetting : Menu
         {
             ((SliderUI)points[_pointIdx]._selectedUI).Value -= 0.005f;
             _sound.SetVolume(_pointIdx, ((SliderUI)points[_pointIdx]._selectedUI).Value);
+            SoundManager._Sound = _sound;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             ((SliderUI)points[_pointIdx]._selectedUI).Value += 0.005f;
             _sound.SetVolume(_pointIdx, ((SliderUI)points[_pointIdx]._selectedUI).Value);
+            SoundManager._Sound = _sound;
         }
         for(var i = 0; i < points.Count; i++)
         {

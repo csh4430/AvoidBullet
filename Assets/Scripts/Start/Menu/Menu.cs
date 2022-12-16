@@ -8,6 +8,6 @@ public class Menu
     public StartSceneMgr StartSceneMgr { get; set; }
     public virtual void Interactive() {}
     public virtual void Deinteractive() {}
-    public virtual void Awake(){}
+    public virtual void Start(){}
     public virtual void Update(){}
 }
