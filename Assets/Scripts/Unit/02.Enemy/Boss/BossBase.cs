@@ -9,7 +9,20 @@ public class BossBase : EnemyBase
     protected override void Awake()
     {
         base.Awake();
-        var attack = AddBehaviour<SoldierAttack>();
+        var attack = AddBehaviour<BossAttack>();
+        if (isFinalBoss)
+        {
+            state.Stat.MaxHealth = 850;
+            state.Stat.Health = 850;
+            state.Stat.Atk = 10;
+        }
+        else
+        {
+            state.Stat.MaxHealth = 600;
+            state.Stat.Health = 600;
+            state.Stat.Atk = 8;
+        }
+
         for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
         {
             attack.Bullets.Add(Bullets[(int)e]);
@@ -31,5 +44,5 @@ public class BossBase : EnemyBase
         base.Update();
     }
 
-   
+
 }
