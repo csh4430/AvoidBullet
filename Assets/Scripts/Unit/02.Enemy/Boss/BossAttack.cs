@@ -8,7 +8,6 @@ public class BossAttack : EnemyAttack
 
     private float currentTime = 0f;
 
-
     public override void Awake()
     {
         base.Awake();
@@ -29,15 +28,23 @@ public class BossAttack : EnemyAttack
     {
 
     }
-
-    private int Phase()
+    private int Phase(float curHealth, float maxHealth)
     {
-        int p = ThisUnit.GetComponent<BossBase>().isFinalBoss ? 2 : 3;
-        for (int i = 1; i < p; i++)
+        switch (curHealth)
         {
-            if (ThisUnit.State.Stat.MaxHealth / p * i == )
-                return i;
+            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth:
+                return 1;
+            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 2:
+                return 2;
+            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 3:
+                return 3;
         }
+        Debug.LogError("incorrect boss hp");
         return -1;
+    }
+
+    private void ChooseRandom()
+    {
+
     }
 }

@@ -31,4 +31,5 @@ public class BossBase : EnemyBase
         base.Update();
     }
 
+   
 }
