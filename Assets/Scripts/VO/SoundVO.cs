@@ -12,9 +12,9 @@ public class SoundVO
     
     public SoundVO()
     {
-        MasterVolume = 1f;
-        MusicVolume = 1f;
-        EffectVolume = 1f;
+        MasterVolume = 1.0f;
+        MusicVolume = 1.0f;
+        EffectVolume = 1.0f;
     }
 
     public SoundVO(float masterVolume, float musicVolume, float effectVolume)

@@ -25,15 +25,17 @@ public class StartSceneMgr : MonoBehaviour
         
         ((MenuSetting)_menus[2]).points = _points;
 
-        foreach (var menu in _menus)
-        {
-            menu.Awake();
-        }
+        
     }
 
     private void Start()
     {
         _fadeUI.State = FadeState.FADE_IN;
+        
+        foreach (var menu in _menus)
+        {
+            menu.Start();
+        }
     }
 
     private void Update()
