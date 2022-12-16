@@ -49,6 +49,7 @@ Material:
     m_Floats:
     - _Alpha: 1
     - _Intensity: 2
+    - _Nosie: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: -1.2

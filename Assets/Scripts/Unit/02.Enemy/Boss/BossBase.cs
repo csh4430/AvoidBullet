@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class BossBase : EnemyBase
 {
-    [SerializeField] public bool isFinalBoss { get; private set; } = false;
+    public bool isFinalBoss { get; private set; } = false;
+    [SerializeField] private GameObject player1 { get; }
+    [SerializeField] private GameObject player2 { get; }
 
+    [SerializeField] private GameObject soldierPrefab { get; }
+    [SerializeField] private GameObject bombPrefab { get; }
     protected override void Awake()
     {
         base.Awake();
         var attack = AddBehaviour<BossAttack>();
         if (isFinalBoss)
         {
-            state.Stat.MaxHealth = 850;
-            state.Stat.Health = 850;
+            state.Stat.MaxHealth = 1700;
+            state.Stat.Health = 1700;
             state.Stat.Atk = 10;
         }
         else
         {
-            state.Stat.MaxHealth = 600;
-            state.Stat.Health = 600;
+            state.Stat.MaxHealth = 1300;
+            state.Stat.Health = 1300;
             state.Stat.Atk = 8;
         }
 
