@@ -8,6 +8,8 @@ public class BombBase : EnemyBase
     {
         base.Awake();
         var attack = AddBehaviour<BombAttack>();
+        var render = AddBehaviour<BombRender>();
+        render.Duration = attack.Delay;
         state.Stat.MaxHealth = 30;
         state.Stat.Health = 30;
         state.Stat.Atk = 7;

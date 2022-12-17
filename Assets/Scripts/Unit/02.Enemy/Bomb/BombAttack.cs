@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BombAttack : EnemyAttack
 {
-    public float Delay { get; set; } = 4f;
+    public float Delay { get; set; } = 5f;
 
     private float currentTime = 0f;
 
@@ -16,11 +17,11 @@ public class BombAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
+        ThisUnit.transform.DOLocalMoveX(0.2f,Delay).SetRelative().SetEase(Ease.Flash, 170, -1);
     }
 
     public override void Update()
     {
-        base.Update();
         currentTime += Time.deltaTime;
         if (currentTime >= Delay)
         {
@@ -30,7 +31,6 @@ public class BombAttack : EnemyAttack
             return;
         }
     }
-
     public override void Attack()
     {
         Attack(AttackType.Circle, Bullets[0], 10, 13, 1, 1f, 1);

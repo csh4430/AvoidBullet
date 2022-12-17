@@ -8,15 +8,15 @@ public class UnitRender : UnitBehaviour
 {
     public GameObject DeathParticle { get; set; }
     
-    private UnitState state => ThisUnit.State;
-    private Material mainMaterial;
-    private Material outlineMaterial;
-    private Light light;
-    private Color originalColor;
-    private Color originalLight;
+    protected UnitState state => ThisUnit.State;
+    protected Material mainMaterial;
+    protected Material outlineMaterial;
+    protected Light light;
+    protected Color originalColor;
+    protected Color originalLight;
 
-    private bool isInCoroutine = false;
-    private bool isDead = false;
+    protected bool isInCoroutine = false;
+    protected bool isDead = false;
     public override void Awake()
     {
         base.Awake();
@@ -68,8 +68,7 @@ public class UnitRender : UnitBehaviour
         callback?.Invoke();
     }
     
-    private void SetColor(Color color, Color lightColor, float alpha)
-
+    public void SetColor(Color color, Color lightColor, float alpha)
     {
         color.a = alpha;
         outlineMaterial.color = color;
