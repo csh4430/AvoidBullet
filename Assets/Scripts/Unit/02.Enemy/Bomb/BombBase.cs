@@ -6,7 +6,7 @@ public class BombBase : EnemyBase
 {
     protected override void Awake()
     {
-        base.Awake();
+        base.Init();
         var attack = AddBehaviour<BombAttack>();
         var render = AddBehaviour<BombRender>();
         render.Duration = attack.Delay;
@@ -17,6 +17,7 @@ public class BombBase : EnemyBase
         {
             attack.Bullets.Add(Bullets[(int)e]);
         }
+        base.Awake();
     }
 
     protected override void Init()

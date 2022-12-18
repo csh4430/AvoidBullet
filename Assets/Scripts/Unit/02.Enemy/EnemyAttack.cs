@@ -148,7 +148,7 @@ public class EnemyAttack : UnitAttack
         }
 
     }
-    //6개의 탄막이 플레이어를 향해 점점 좁혀옴
+    //6???? ????? ?÷???? ???? ???? ??????
     protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float speed, float raidus, float delay, int times)
     {
         for (var t = 0; t < times; t++)

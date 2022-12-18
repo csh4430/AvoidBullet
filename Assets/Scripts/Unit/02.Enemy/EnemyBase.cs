@@ -9,9 +9,7 @@ public class EnemyBase : UnitBase
 
     protected override void Awake()
     {
-        base.Init();
         state = AddBehaviour<UnitState>();
-        AddBehaviour<UnitRender>().DeathParticle = deathEffect;
         state.Stat.MaxHealth = 200;
         state.Stat.Health = 200;
         state.Stat.Atk = 7;
