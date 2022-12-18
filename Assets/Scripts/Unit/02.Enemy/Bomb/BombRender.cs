@@ -9,13 +9,13 @@ public class BombRender : UnitRender
     public override void Update()
     {
         base.Update();
-        curRed += 1/Duration * Time.deltaTime;
+        curRed += 1 / Duration * Time.deltaTime;
         GettingRedder();
     }
 
     public void GettingRedder()
     {
-        Color color = new Color(curRed,0,0);
+        Color color = new Color(125+curRed, 125 - curRed, 125 - curRed + 20);
         SetColor(color, color, 1);
     }
 }

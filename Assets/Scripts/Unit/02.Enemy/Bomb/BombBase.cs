@@ -10,8 +10,8 @@ public class BombBase : EnemyBase
         var attack = AddBehaviour<BombAttack>();
         var render = AddBehaviour<BombRender>();
         render.Duration = attack.Delay;
-        state.Stat.MaxHealth = 30;
-        state.Stat.Health = 30;
+        state.Stat.MaxHealth = 20;
+        state.Stat.Health = 20;
         state.Stat.Atk = 7;
         for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
         {
