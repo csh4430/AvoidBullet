@@ -15,7 +15,7 @@ public class BombRender : UnitRender
 
     public void GettingRedder()
     {
-        Color color = new Color(125+curRed, 125 - curRed, 125 - curRed + 20);
+        Color color = new Color(outlineMaterial.color.r+curRed, outlineMaterial.color.g - curRed,outlineMaterial.color.b - curRed);
         SetColor(color, color, 1);
     }
 }
