@@ -33,6 +33,6 @@ public class BombAttack : EnemyAttack
     }
     public override void Attack()
     {
-        Attack(AttackType.Circle, Bullets[0], 10, 13, 1, 1f, 1);
+        Attack(AttackType.Circle, Bullets[2], 10, 13, 1, 1f, 1);
     }
 }

@@ -6,7 +6,7 @@ public class SoldierBase : EnemyBase
 {
     protected override void Awake()
     {
-        base.Awake();
+        base.Init();
         var attack = AddBehaviour<SoldierAttack>();
         state.Stat.MaxHealth = 60;
         state.Stat.Health = 60;
@@ -15,6 +15,7 @@ public class SoldierBase : EnemyBase
         {
             attack.Bullets.Add(Bullets[(int)e]);
         }
+        base.Awake();
     }
 
     protected override void Init()
