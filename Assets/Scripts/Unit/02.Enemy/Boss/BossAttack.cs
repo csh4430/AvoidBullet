@@ -164,9 +164,11 @@ public class BossAttack : EnemyAttack
     }
     private void PhaseThree()
     {
+        int i = Random.Range(1, 4);
+        //최종보스
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
-
+            Attack(AttackType.Wave, Bullets[i], 30, 10, 0.1f, 0.5f, 1);
         }
     }
 }
