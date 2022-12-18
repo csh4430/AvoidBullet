@@ -8,8 +8,11 @@ public class BossBase : EnemyBase
     [SerializeField] private GameObject player1 { get; }
     [SerializeField] private GameObject player2 { get; }
 
-    [SerializeField] private GameObject soldierPrefab { get; }
-    [SerializeField] private GameObject bombPrefab { get; }
+    [SerializeField] private GameObject soldierPrefab;
+    [SerializeField] private GameObject bombPrefab;
+
+    public GameObject BombPrefab => bombPrefab;
+    public GameObject SoldierPrefab => soldierPrefab;
     protected override void Awake()
     {
         base.Awake();
