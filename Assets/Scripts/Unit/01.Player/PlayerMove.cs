@@ -45,6 +45,9 @@ public class PlayerMove : UnitMove
         }
 
         dir = dir.normalized;
-        ThisUnit.transform.Translate(dir * (Time.deltaTime * Speed), Space.Self);
+        var nextDir = dir * (Time.deltaTime * Speed);
+        if (GameManager.Instance.GetManager<MapManager>().CheckMap(ThisUnit.transform.position + nextDir) is false)
+            return;
+        ThisUnit.transform.Translate(nextDir, Space.Self);
     }
 }
