@@ -29,6 +29,7 @@ public class UnitBase : MonoBehaviour
     protected virtual void Init()
     {
         behaviours = new Dictionary<Type, UnitBehaviour>();
+        state = AddBehaviour<UnitState>();
     }
     protected virtual void Awake()
     {
