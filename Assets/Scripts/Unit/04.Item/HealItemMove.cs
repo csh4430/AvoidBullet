@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class HealItemMove : UnitMove
 {
+    private Vector3 mainPos;
     public override void Awake()
     {
         base.Awake();
+        mainPos = ThisUnit.transform.position;
     }
 
     public override void Update()
@@ -16,6 +18,6 @@ public class HealItemMove : UnitMove
 
     protected override void Translate()
     {
-        base.Translate();
+        ThisUnit.transform.RotateAround(mainPos, Vector3.right, 30f);
     }
 }
