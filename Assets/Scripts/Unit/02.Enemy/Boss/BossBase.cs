@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossBase : EnemyBase
 {
-    public bool isFinalBoss { get; private set; } = false;
+    [field: SerializeField]  public bool isFinalBoss { get; set; } = false;
     [SerializeField] private GameObject player1 { get; }
     [SerializeField] private GameObject player2 { get; }
 
@@ -15,8 +15,13 @@ public class BossBase : EnemyBase
     public GameObject SoldierPrefab => soldierPrefab;
     protected override void Awake()
     {
-        base.Awake();
+        base.Init();
         var attack = AddBehaviour<BossAttack>();
+        for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
+        {
+            attack.Bullets.Add(Bullets[(int)e]);
+        }
+        base.Awake();
         if (isFinalBoss)
         {
             state.Stat.MaxHealth = 1700;
@@ -30,10 +35,6 @@ public class BossBase : EnemyBase
             state.Stat.Atk = 8;
         }
 
-        for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
-        {
-            attack.Bullets.Add(Bullets[(int)e]);
-        }
     }
 
     protected override void Init()
