@@ -11,7 +11,6 @@ public class PlayerBase : UnitBase
     protected override void Awake()
     {
         base.Init();
-        state = AddBehaviour<UnitState>();
         state.Stat.Spd = 5f;
         state.Stat.MaxHealth = 100;
         state.Stat.Health = 100;

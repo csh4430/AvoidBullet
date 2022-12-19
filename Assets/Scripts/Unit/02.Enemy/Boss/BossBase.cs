@@ -17,6 +17,7 @@ public class BossBase : EnemyBase
     {
         base.Init();
         var attack = AddBehaviour<BossAttack>();
+        AddBehaviour<UnitRender>();
         for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
         {
             attack.Bullets.Add(Bullets[(int)e]);

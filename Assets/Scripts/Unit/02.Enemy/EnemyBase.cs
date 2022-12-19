@@ -9,10 +9,6 @@ public class EnemyBase : UnitBase
 
     protected override void Awake()
     {
-        state = AddBehaviour<UnitState>();
-        state.Stat.MaxHealth = 200;
-        state.Stat.Health = 200;
-        state.Stat.Atk = 7;
         base.Awake();
     }
 }
