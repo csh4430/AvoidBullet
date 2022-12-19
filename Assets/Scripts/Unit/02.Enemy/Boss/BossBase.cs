@@ -21,7 +21,6 @@ public class BossBase : EnemyBase
         {
             attack.Bullets.Add(Bullets[(int)e]);
         }
-        base.Awake();
         if (isFinalBoss)
         {
             state.Stat.MaxHealth = 1700;
@@ -34,6 +33,7 @@ public class BossBase : EnemyBase
             state.Stat.Health = 1300;
             state.Stat.Atk = 8;
         }
+        base.Awake();
 
     }
 

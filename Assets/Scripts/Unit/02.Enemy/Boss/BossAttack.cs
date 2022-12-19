@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAttack : EnemyAttack
 {
-    public float Delay { get; set; } = 5f;
+    public float Delay { get; set; } = 2f;
 
     private float currentTime = 0f;
 
@@ -18,6 +18,7 @@ public class BossAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
+        Attack();
     }
 
     public override void Update()
@@ -33,7 +34,7 @@ public class BossAttack : EnemyAttack
         {
             currentTime = 0f;
             Phase(ThisUnit.State.Stat.Health, ThisUnit.State.Stat.MaxHealth);
-            switch(phase)
+            switch (phase)
             {
                 case 1:
                     PhaseOne();
@@ -51,10 +52,11 @@ public class BossAttack : EnemyAttack
     }
     private GameObject FindNear()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        return players[Random.Range(1, 3)];
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player_1");
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player_2");
+        return Random.Range(1, 3) == 1 ? player1 : player2;
     }
-    private IEnumerator InstantiateEnemy(GameObject prefab, int times,float delay)
+    private IEnumerator InstantiateEnemy(GameObject prefab, int times, float delay)
     {
         for (int i = 0; i < times; i++)
         {
@@ -83,7 +85,7 @@ public class BossAttack : EnemyAttack
     private void PhaseOne()
     {
         int rand = Random.Range(1, 8);
-        int i = Random.Range(1, 4);
+        int i = Random.Range(0, 3);
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
             switch (rand)
@@ -92,7 +94,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(4, 7));
                     break;
                 case 2:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 5,2);
+                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 5, 2);
                     break;
                 case 3:
                     Attack(AttackType.Sector, Bullets[i], 6, 10, 0.1f, 2, 3, FindNear(), 50);
@@ -104,7 +106,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Sector, Bullets[i], 12, 5, 8, 2, 10, ThisUnit.gameObject, 75);
                     break;
                 case 6:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3,2);
+                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3, 2);
                     break;
                 case 7:
                     Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 2, 6);
@@ -121,7 +123,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(2, 6));
                     break;
                 case 2:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2,3);
+                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2, 3);
                     break;
                 case 3:
                     Attack(AttackType.Sector, Bullets[i], 3, 10, 0.1f, 2, 3, FindNear(), 45);
@@ -133,7 +135,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Sector, Bullets[i], 6, 5, 8, 2, 6, ThisUnit.gameObject, 60);
                     break;
                 case 6:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 1,0);
+                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 0);
                     break;
                 case 7:
                     Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2, 3);
@@ -159,7 +161,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Target, Bullets[i], 5, 5, 0.1f, 2, 1, FindNear());
                     break;
                 case 3:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 8,1f);
+                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 8, 1f);
                     break;
                 default:
                     break;
