@@ -15,7 +15,6 @@ public static class SoundManager
         set
         {
             _soundVo = value;
-            Debug.Log($"{_soundVo.MasterVolume}, {_soundVo.MusicVolume}, {_soundVo.EffectVolume}");
             audioMixer.SetFloat("Master", Mathf.Log10(_soundVo.MasterVolume) * 20);
             audioMixer.SetFloat("Music", Mathf.Log10(_soundVo.MusicVolume) * 20);
             audioMixer.SetFloat("Effect", Mathf.Log10(_soundVo.EffectVolume) * 20);
