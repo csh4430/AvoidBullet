@@ -5477,7 +5477,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329420491}
-  m_LocalRotation: {x: -0.000000043536012, y: 0.8666285, z: -0.498954, w: -0.00000007561729}
+  m_LocalRotation: {x: -0.00000004353601, y: 0.8666285, z: -0.498954, w: -0.00000007561728}
   m_LocalPosition: {x: 3.8600006, y: 20.7, z: 10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6011,7 +6011,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140052265}
-  m_LocalRotation: {x: 0.498954, y: 0.00000007561729, z: -0.000000043536012, w: 0.8666285}
+  m_LocalRotation: {x: 0.498954, y: 0.00000007561728, z: -0.00000004353601, w: 0.8666285}
   m_LocalPosition: {x: 0, y: 40, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -17465,7 +17465,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 196.1, y: 50}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1973551835
 MonoBehaviour:
@@ -17487,7 +17487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOME
+  m_text: '> HOME <'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52660c084f8fc2941ab2e915e711bfff, type: 2}
   m_sharedMaterial: {fileID: -8671176634820324148, guid: 52660c084f8fc2941ab2e915e711bfff, type: 2}
