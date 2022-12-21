@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class StartSceneMgr : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class StartSceneMgr : MonoBehaviour
     [SerializeField] private List<PointUI> _points = new List<PointUI>();
     
     private List<Menu> _menus = new List<Menu>();
+    public UniversalRendererData rendererData;
+
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class StartSceneMgr : MonoBehaviour
         _menus[2].StartSceneMgr = this;
         
         ((MenuSetting)_menus[2]).points = _points;
+        ((MenuSetting)_menus[2]).rendererData = rendererData;
 
         
     }
