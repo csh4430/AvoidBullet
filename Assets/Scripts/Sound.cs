@@ -6,9 +6,6 @@ using UnityEngine.Audio;
 using SoundType;
 public class Sound : MonoBehaviour
 {
-    //기본적으로 조정할 오디오믹서. 그룹으로 eff와 bgm을 나누어 놔야 함
-    //또한 각각 그룹의 인스펙터에서 volume 우클릭 -> expose
-    //exposed parameters 에서 각각 파라미터 이름을 바꿔줄 것.
     [SerializeField]
     private AudioMixer audioMixer = null;
     [Header("실행시킬 클립")]
@@ -39,7 +36,7 @@ public class Sound : MonoBehaviour
     {
         //사용 예시
         if (Input.GetKeyDown(KeyCode.E))
-            PlayEff(SoundType.EffType.BtnClick);
+            PlayEff(SoundType.EffType.NextMenu);
         if (Input.GetKeyDown(KeyCode.R))
             PlayBgm(SoundType.BgmType.Title);
     }

@@ -10,11 +10,13 @@ public class MenuSetting : Menu
     public override void Interactive()
     {
         IsOpen = true;
+        StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
     public override void Deinteractive()
     {
         IsOpen = false;
+        StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
     public override void Start()

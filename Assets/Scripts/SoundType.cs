@@ -3,9 +3,13 @@ namespace SoundType
     public enum EffType
     {
         //eff name here
-        BtnClick,
+        NextMenu,
+        ClickBtn,
         LoadScene,
-
+        Damage,
+        Dash,
+        Bomb,
+        Die,
     }
     public enum BgmType
     {
