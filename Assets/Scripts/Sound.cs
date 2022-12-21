@@ -11,14 +11,6 @@ public class Sound : MonoBehaviour
     //exposed parameters 에서 각각 파라미터 이름을 바꿔줄 것.
     [SerializeField]
     private AudioMixer audioMixer = null;
-    //볼륨 조절할 슬라이더.
-    [Header("볼륨 조절할 슬라이더")]
-    [SerializeField]
-    private Slider bgmSlider = null;
-    [SerializeField]
-    private Slider effSlider = null;
-    [SerializeField]
-    private Slider masterSlider = null;
     [Header("실행시킬 클립")]
     [SerializeField]
     private List<AudioClip> effAudioClips = new List<AudioClip>();
@@ -42,7 +34,6 @@ public class Sound : MonoBehaviour
     private void Awake()
     {
         SetSource();
-        //SetAddListener();
     }
     private void Update()
     {
@@ -63,12 +54,6 @@ public class Sound : MonoBehaviour
     {
         Debug.Log("play eff");
         SoundsEff[(int)value].Play();
-    }
-    private void SetAddListener()
-    {
-        bgmSlider.onValueChanged.AddListener(SetBgmVolume);
-        effSlider.onValueChanged.AddListener(SetEffVolume);
-        masterSlider.onValueChanged.AddListener(SetMasterVolume);
     }
     //볼륨을 조절하는 함수. 
     private void SetBgmVolume(float volume)
