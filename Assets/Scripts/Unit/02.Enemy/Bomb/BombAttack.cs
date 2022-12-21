@@ -17,6 +17,12 @@ public class BombAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        ThisUnit.State.Clear();
         ThisUnit.transform.DOLocalMoveX(0.2f,Delay).SetRelative().SetEase(Ease.Flash, 170, -1);
     }
 
@@ -26,8 +32,8 @@ public class BombAttack : EnemyAttack
         if (currentTime >= Delay)
         {
             Attack();
-            ThisUnit.State.Stat.Health = 0f;
-            ThisUnit.State.SetState(StateEnum.Death);
+            currentTime = 0;
+            ThisUnit.State.Die();
             return;
         }
     }

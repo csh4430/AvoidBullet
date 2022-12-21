@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,6 @@ public class BombBase : EnemyBase
             attack.Bullets.Add(Bullets[(int)e]);
         }
         base.Awake();
-        state.Stat.MaxHealth = 30;
-        state.Stat.Health = 30;
-        state.Stat.Atk = 7;
     }
 
     protected override void Init()
@@ -28,6 +26,14 @@ public class BombBase : EnemyBase
     protected override void Start()
     {
         base.Start();
+    }
+
+    protected override void OnEnable()
+    {
+        state.Stat.MaxHealth = 30;
+        state.Stat.Health = 30;
+        state.Stat.Atk = 7;
+        base.OnEnable();
     }
 
     protected override void Update()

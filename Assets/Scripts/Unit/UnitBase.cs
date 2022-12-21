@@ -13,7 +13,11 @@ public class UnitBase : MonoBehaviour
     public UnitState State => state;
     public T GetBehaviour<T>() where T : UnitBehaviour
     {
-        return (T)behaviours[typeof(T)];
+        if (typeof(T).BaseType == typeof(UnitBehaviour))
+        {
+            return (T)behaviours[typeof(T)];
+        }
+        return (T)behaviours[typeof(T).BaseType];
     }
 
     public T AddBehaviour<T>() where T : UnitBehaviour, new()
@@ -22,7 +26,7 @@ public class UnitBase : MonoBehaviour
         {
             ThisUnit = this
         };
-        behaviours.Add(typeof(T), behaviour);
+        behaviours.Add(typeof(T).BaseType == typeof(UnitBehaviour) ? typeof(T) : typeof(T).BaseType, behaviour);
         return behaviour;
     }
 
@@ -53,6 +57,19 @@ public class UnitBase : MonoBehaviour
             behaviour.Start();
         }
     }
+
+    protected virtual void OnEnable()
+    {
+        if(behaviours.Count == 0)
+        {
+            return;
+        }
+        foreach (var behaviour in behaviours.Values)
+        {
+            behaviour.OnEnable();
+        }
+    }
+
     protected virtual void Update()
     {
         if(behaviours.Count == 0)
