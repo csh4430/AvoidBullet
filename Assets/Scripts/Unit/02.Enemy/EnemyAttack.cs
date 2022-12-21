@@ -12,6 +12,7 @@ public enum AttackType
     Spin,
     Ring,
     Target,
+    Instantiate,
 }
 
 public class EnemyAttack : UnitAttack
@@ -61,6 +62,9 @@ public class EnemyAttack : UnitAttack
                 break;
             case AttackType.Target:
                 ThisUnit.StartCoroutine(TargetAttack(prefab, target, n, speed, delay, times));
+                break;
+            case AttackType.Instantiate:
+                ThisUnit.StartCoroutine(InstantiateEnemy(prefab, times, delay));
                 break;
         }
     }

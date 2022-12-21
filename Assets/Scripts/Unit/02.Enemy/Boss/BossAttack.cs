@@ -50,22 +50,13 @@ public class BossAttack : EnemyAttack
             }
         }
     }
-    private GameObject FindNear()
+    private GameObject FindRandom()
     {
         GameObject player1 = GameObject.FindGameObjectWithTag("Player_1");
         GameObject player2 = GameObject.FindGameObjectWithTag("Player_2");
         return Random.Range(1, 3) == 1 ? player1 : player2;
     }
-    private IEnumerator InstantiateEnemy(GameObject prefab, int times, float delay)
-    {
-        for (int i = 0; i < times; i++)
-        {
-            float randomX = Random.Range(-19f, 20f);
-            float randomZ = Random.Range(-19f, 20f);
-            Object.Instantiate(prefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
-            yield return new WaitForSeconds(delay);
-        }
-    }
+ 
     private int Phase(float curHealth, float maxHealth)
     {
         switch (curHealth)
@@ -95,19 +86,21 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(4, 7));
                     break;
                 case 2:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 5, 2);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,2);
+                    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 5, 2);
                     break;
                 case 3:
-                    Attack(AttackType.Sector, Bullets[i], 6, 10, 0.1f, 2, 3, FindNear(), 50);
+                    Attack(AttackType.Sector, Bullets[2], 6, 10, 0.1f, 2, 3, FindRandom(), 50);
                     break;
                 case 4:
-                    Attack(AttackType.Ring, Bullets[i], 6, 5, 8, 3, 3, FindNear());
+                    Attack(AttackType.Ring, Bullets[2], 6, 5, 8, 3, 3, FindRandom());
                     break;
                 case 5:
-                    Attack(AttackType.Sector, Bullets[i], 12, 5, 8, 2, 10, ThisUnit.gameObject, 75);
+                    Attack(AttackType.Sector, Bullets[2], 12, 5, 8, 2, 10, ThisUnit.gameObject, 75);
                     break;
                 case 6:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3, 2);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,3);
+                    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3, 2);
                     break;
                 case 7:
                     Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 2, 6);
@@ -124,20 +117,23 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(2, 6));
                     break;
                 case 2:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2, 3);
+                    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2, 3);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,1);
                     break;
                 case 3:
-                    Attack(AttackType.Sector, Bullets[i], 3, 10, 0.1f, 2, 3, FindNear(), 45);
+                    Attack(AttackType.Sector, Bullets[2], 3, 10, 0.1f, 2, 3, FindRandom(), 45);
                     break;
                 case 4:
-                    Attack(AttackType.Ring, Bullets[i], 4, 5, 8, 3, 3, FindNear());
+                    Attack(AttackType.Ring, Bullets[2], 4, 5, 8, 3, 3, FindRandom());
                     break;
                 case 5:
-                    Attack(AttackType.Sector, Bullets[i], 6, 5, 8, 2, 6, ThisUnit.gameObject, 60);
+                    Attack(AttackType.Sector, Bullets[2], 6, 5, 8, 2, 6, ThisUnit.gameObject, 60);
                     break;
+                //case 6:
+                //    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,0f,1);
+                //    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 0);
+                //    break;
                 case 6:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 0);
-                    break;
                 case 7:
                     Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2, 3);
                     break;
@@ -157,13 +153,13 @@ public class BossAttack : EnemyAttack
             switch (rand)
             {
                 case 1:
-                    Attack(AttackType.Target, Bullets[i], 3, 10, 0.1f, 2, Random.Range(1, 4), FindNear());
+                    Attack(AttackType.Target, Bullets[2], 3, 10, 0.1f, 2, Random.Range(1, 4), FindRandom());
                     break;
                 case 2:
-                    Attack(AttackType.Target, Bullets[i], 5, 5, 0.1f, 2, 1, FindNear());
+                    Attack(AttackType.Target, Bullets[2], 5, 5, 0.1f, 2, 1, FindRandom());
                     break;
                 case 3:
-                    InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 8, 1f);
+                    Attack(AttackType.Ring, Bullets[i], 6, 3, 8, 3, 1, FindRandom());
                     break;
                 default:
                     break;
@@ -174,7 +170,7 @@ public class BossAttack : EnemyAttack
             switch (rand)
             {
                 case 1:
-                    Attack(AttackType.Target, Bullets[i], 4, 10, 0.1f, 2f, 1, FindNear());
+                    Attack(AttackType.Target, Bullets[2], 4, 10, 0.1f, 2f, 1, FindRandom());
                     break;
                 case 2:
                     Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2f, Random.Range(2, 4));
@@ -194,7 +190,7 @@ public class BossAttack : EnemyAttack
         //최종보스
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
-            Attack(AttackType.Wave, Bullets[i], 30, 10, 0.1f, 0.5f, 1);
+            Attack(AttackType.Spin, Bullets[i], 30, 10, 0.1f, 0.5f, 1);
         }
     }
 }

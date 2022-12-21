@@ -17,7 +17,7 @@ public class BombAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
-        ThisUnit.transform.DOLocalMoveX(0.2f,Delay).SetRelative().SetEase(Ease.Flash, 170, -1);
+        ThisUnit.transform.DOLocalMoveX(0.2f,Delay).SetRelative().SetEase(Ease.Flash, 200, -1);
     }
 
     public override void Update()
