@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAttack : EnemyAttack
 {
-    public float Delay { get; set; } = 2f;
+    public float Delay { get; set; } = 1.5f;
 
     private float currentTime = 0f;
 
@@ -62,7 +62,7 @@ public class BossAttack : EnemyAttack
         {
             float randomX = Random.Range(-19f, 20f);
             float randomZ = Random.Range(-19f, 20f);
-            Object.Instantiate(ThisUnit.gameObject.GetComponent<BossBase>().SoldierPrefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
+            Object.Instantiate(prefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
             yield return new WaitForSeconds(delay);
         }
     }
@@ -86,6 +86,7 @@ public class BossAttack : EnemyAttack
     {
         int rand = Random.Range(1, 8);
         int i = Random.Range(0, 3);
+        Debug.Log($"PhaseOne Pattern : {rand}");
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
             switch (rand)
@@ -150,6 +151,7 @@ public class BossAttack : EnemyAttack
     {
         int rand = Random.Range(1, 4);
         int i = Random.Range(1, 4);
+        Debug.Log($"PhaseTwo Pattern : {rand}");
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
             switch (rand)
@@ -188,6 +190,7 @@ public class BossAttack : EnemyAttack
     private void PhaseThree()
     {
         int i = Random.Range(1, 4);
+        Debug.Log($"PhaseThree");
         //최종보스
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {

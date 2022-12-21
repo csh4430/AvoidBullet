@@ -24,14 +24,14 @@ public class BossBase : EnemyBase
         }
         if (isFinalBoss)
         {
-            state.Stat.MaxHealth = 1700;
-            state.Stat.Health = 1700;
+            state.Stat.MaxHealth = 2000;
+            state.Stat.Health = 2000;
             state.Stat.Atk = 10;
         }
         else
         {
-            state.Stat.MaxHealth = 1300;
-            state.Stat.Health = 1300;
+            state.Stat.MaxHealth = 2500;
+            state.Stat.Health = 2500;
             state.Stat.Atk = 8;
         }
         base.Awake();
@@ -45,6 +45,8 @@ public class BossBase : EnemyBase
 
     protected override void Start()
     {
+        GameManager.Instance.GetManager<PoolManager>().CreatePool(bombPrefab, 5);
+        GameManager.Instance.GetManager<PoolManager>().CreatePool(soldierPrefab, 5);
         base.Start();
     }
 

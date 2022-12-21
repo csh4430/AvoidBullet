@@ -148,7 +148,6 @@ public class EnemyAttack : UnitAttack
         }
 
     }
-    //6???? ????? ?¡À???? ???? ???? ??????
     protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float speed, float raidus, float delay, int times)
     {
         for (var t = 0; t < times; t++)
@@ -186,7 +185,17 @@ public class EnemyAttack : UnitAttack
         }
 
     }
-
+    protected IEnumerator InstantiateEnemy (GameObject prefab,int times,float delay)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            float randomX = Random.Range(-19f, 19f);
+            float randomZ = Random.Range(-19f, 19f);
+            //Instantiate(prefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
+            var enemy = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,new Vector3(randomX,0,randomZ),Quaternion.identity);
+            yield return new WaitForSeconds(delay);
+        }
+    }
     protected IEnumerator DashAttack(GameObject prefab, int n, float speed, float delay, int times)
     {
         for (var t = 0; t < times; t++)
