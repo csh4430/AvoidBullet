@@ -29,8 +29,9 @@ public class UnitState : UnitBehaviour
         if (NowState.HasFlag(StateEnum.Death)) return;
         Stat.Health -= value;
         SetState(StateEnum.Damage);
-        
-        if(Stat.Health <= 0)
+        Sound.PlayEff(SoundType.EffType.Damage);
+
+        if (Stat.Health <= 0)
         {
             Stat.Health = 0;
             RemoveState(StateEnum.Damage);
@@ -42,6 +43,7 @@ public class UnitState : UnitBehaviour
     {
         if (NowState.HasFlag(StateEnum.Death)) return;
         SetState(StateEnum.Death);
+        Sound.PlayEff(SoundType.EffType.Die);
     }
 
     public void Clear()

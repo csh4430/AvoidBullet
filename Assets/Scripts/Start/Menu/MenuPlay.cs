@@ -8,7 +8,7 @@ public class MenuPlay : Menu
 {
     public override void Interactive()
     {
-        StartSceneMgr.Sound.PlayEff(SoundType.EffType.LoadScene);
+        Sound.PlayEff(SoundType.EffType.LoadScene);
         StartSceneMgr._fadeUI.SetIndex(1);
         StartSceneMgr._fadeUI.State = FadeState.FADE_OUT;
         DOTween.KillAll();

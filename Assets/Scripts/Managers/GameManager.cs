@@ -49,5 +49,8 @@ public class GameManager : MonoBehaviour
         AddManager<UIManager>().StayUIMgr.FadeUI.State = FadeState.FADE_IN;
         sound = FindObjectOfType<Sound>();
     }
-
+    private void Start()
+    {
+        Sound.PlayBgm(SoundType.BgmType.Tuto);
+    }
 }

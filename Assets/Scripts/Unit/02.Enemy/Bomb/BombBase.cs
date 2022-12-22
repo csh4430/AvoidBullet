@@ -26,6 +26,7 @@ public class BombBase : EnemyBase
     protected override void Start()
     {
         base.Start();
+        Sound.PlayEff(SoundType.EffType.Bomb,true);
     }
 
     protected override void OnEnable()

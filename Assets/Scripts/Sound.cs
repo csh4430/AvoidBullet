@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using SoundType;
+
 public class Sound : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer = null;
     [Header("실행시킬 클립")]
     [SerializeField]
-    private List<AudioClip> effAudioClips = new List<AudioClip>();
+    private List<AudioClip> effAudioClips;
     [SerializeField]
     private List<AudioClip> bgmAudioClips = new List<AudioClip>();
     [Header("오디오 믹서 그룹")]
@@ -19,67 +19,38 @@ public class Sound : MonoBehaviour
     [SerializeField]
     private AudioMixerGroup effMixerGroup;
 
-    private List<AudioSource> SoundsEff = new List<AudioSource>();
-    private List<AudioSource> SoundsBgm = new List<AudioSource>();
+    private static List<AudioSource> SoundsEff = new List<AudioSource>();
+    private static List<AudioSource> SoundsBgm = new List<AudioSource>();
 
     //exposed parameters의 파라미터들의 이름.
     private string bgm_Group = "Music";
     private string eff_Group = "Effect";
     private string master_Group = "Master";
 
-    private AudioSource lastPlayBgm;
+    private static AudioSource lastPlayBgm;
     private void Awake()
     {
         SetSource();
     }
-    private void Update()
+    public static void PlayBgm(SoundType.BgmType value)
     {
-        //사용 예시
-        if (Input.GetKeyDown(KeyCode.E))
-            PlayEff(SoundType.EffType.NextMenu);
-        if (Input.GetKeyDown(KeyCode.R))
-            PlayBgm(SoundType.BgmType.Title);
-    }
-    public void PlayBgm(SoundType.BgmType value)
-    {
-        Debug.Log("play Bgm");
+        //Debug.Log("play Bgm");
         lastPlayBgm?.Stop();
         SoundsBgm[(int)value].Play();
         lastPlayBgm = SoundsBgm[(int)value];
     }
-    public void PlayEff(SoundType.EffType value)
+    public static void PlayEff(SoundType.EffType value, bool isLoop = false)
     {
-        Debug.Log("play eff");
+        //Debug.Log("play eff");
+        if (isLoop)
+            SoundsEff[(int)value].loop = true;
+        else
+            SoundsEff[(int)value].loop = false;
         SoundsEff[(int)value].Play();
     }
-    //볼륨을 조절하는 함수. 
-    private void SetBgmVolume(float volume)
+    public static void StopEff(SoundType.EffType value)
     {
-        if (volume == 0) //볼륨이 0이면  log계산이 1로 처리되기 때문에 크게 들려 오류 발생. 예외처리
-        {
-            audioMixer.SetFloat(bgm_Group, -80);
-            return;
-        }
-        audioMixer.SetFloat(bgm_Group, Mathf.Log10(volume) * 20);
-        //슬라이더는 정수 스케일이지만 오디오 믹서는 로그 스케일이기 때문에 변환과정을 거친다.
-    }
-    private void SetEffVolume(float volume)
-    {
-        if (volume == 0)
-        {
-            audioMixer.SetFloat(eff_Group, -80);
-            return;
-        }
-        audioMixer.SetFloat(eff_Group, Mathf.Log10(volume) * 20);
-    }
-    private void SetMasterVolume(float volume)
-    {
-        if (volume == 0)
-        {
-            audioMixer.SetFloat(master_Group, -80);
-            return;
-        }
-        audioMixer.SetFloat(master_Group, Mathf.Log10(volume) * 20);
+        SoundsEff[(int)value].Stop();
     }
     private void SetSource()
     {

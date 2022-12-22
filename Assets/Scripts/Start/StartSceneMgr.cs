@@ -8,8 +8,6 @@ using UnityEngine.Rendering.Universal;
 public class StartSceneMgr : MonoBehaviour
 {
     [SerializeField] private int _menuIdx = 0;
-    private Sound sound;
-    public Sound Sound=>sound;
     public FadeUI _fadeUI;
     [SerializeField] private List<PointUI> _points = new List<PointUI>();
     
@@ -30,14 +28,13 @@ public class StartSceneMgr : MonoBehaviour
         ((MenuSetting)_menus[2]).points = _points;
         ((MenuSetting)_menus[2]).rendererData = rendererData;
 
-        sound = FindObjectOfType<Sound>();
     }
 
     private void Start()
     {
         _fadeUI = FindObjectOfType<StayUIMgr>().FadeUI;
         _fadeUI.State = FadeState.FADE_IN;
-        sound.PlayBgm(SoundType.BgmType.Title);
+        Sound.PlayBgm(SoundType.BgmType.Title);
         foreach (var menu in _menus)
         {
             menu.Start();
@@ -54,7 +51,7 @@ public class StartSceneMgr : MonoBehaviour
             }
             _menuIdx = (_menuIdx + 1) % 4;
             RotateCamera.Rotate(_menuIdx);
-            sound.PlayEff(SoundType.EffType.NextMenu);
+            Sound.PlayEff(SoundType.EffType.NextMenu);
         }
 
         if (Input.GetKeyDown(KeyCode.Return))

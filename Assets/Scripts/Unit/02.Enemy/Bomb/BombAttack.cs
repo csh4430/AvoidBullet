@@ -32,6 +32,8 @@ public class BombAttack : EnemyAttack
         if (currentTime >= Delay)
         {
             Attack();
+            Sound.StopEff(SoundType.EffType.Bomb);
+            Sound.PlayEff(SoundType.EffType.Die);
             currentTime = 0;
             ThisUnit.State.Die();
             return;

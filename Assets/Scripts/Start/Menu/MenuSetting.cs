@@ -13,13 +13,13 @@ public class MenuSetting : Menu
     public override void Interactive()
     {
         IsOpen = true;
-        StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
+        Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
     public override void Deinteractive()
     {
         IsOpen = false;
-        StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
+        Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
     public override void Start()
@@ -45,9 +45,15 @@ public class MenuSetting : Menu
             return;
         }
         if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
             _pointIdx = (_pointIdx + points.Count - 1) % points.Count;
+            Sound.PlayEff(SoundType.EffType.NextMenu);   
+        }
         if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
             _pointIdx = (_pointIdx + 1) % points.Count;
+            Sound.PlayEff(SoundType.EffType.NextMenu);   
+        }
         if (points[_pointIdx]._selectedUI is SliderUI)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
