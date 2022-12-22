@@ -35,6 +35,7 @@ public class StartSceneMgr : MonoBehaviour
 
     private void Start()
     {
+        _fadeUI = FindObjectOfType<StayUIMgr>().FadeUI;
         _fadeUI.State = FadeState.FADE_IN;
         sound.PlayBgm(SoundType.BgmType.Title);
         foreach (var menu in _menus)

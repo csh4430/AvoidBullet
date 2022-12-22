@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeUI: {fileID: 6447304403834597835}
-  _pauseCanvas: {fileID: 6447304403834597877}
+  _pauseCanvas: {fileID: 7117601041171450557}
   _inGameVolume: {fileID: 6034387470340671998}
   isChanging: 0
 --- !u!223 &6447304404611063409
