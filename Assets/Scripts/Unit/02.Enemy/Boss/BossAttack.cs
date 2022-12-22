@@ -32,7 +32,7 @@ public class BossAttack : EnemyAttack
         if (currentTime >= Delay)
         {
             currentTime = 0f;
-            Phase(ThisUnit.State.Stat.Health, ThisUnit.State.Stat.MaxHealth);
+            phase = Phase(ThisUnit.State.Stat.Health, ThisUnit.State.Stat.MaxHealth);
             switch (phase)
             {
                 case 1:
@@ -61,18 +61,20 @@ public class BossAttack : EnemyAttack
         int nextPhase = 0;
         switch (curHealth)
         {
-            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth:
-                nextPhase = 1;
+            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 3:
+                nextPhase = 3;
                 break;
             case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 2:
                 nextPhase = 2;
                 break;
-            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 3:
-                nextPhase = 3;
+            case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth:
+                nextPhase = 1; 
                 break;
         }
         if (phase != nextPhase)
             Debug.Log("Phase has changed. Now Phase : " + nextPhase);
+        else
+            Debug.Log(phase);
         return nextPhase;
     }
 
@@ -172,7 +174,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Target, Bullets[2], 4, 10, 0.1f, 2f, 1, FindRandom());
                     break;
                 case 2:
-                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2f, Random.Range(2, 4));
+                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 1f, Random.Range(1, 3));
                     break;
                 case 3:
                     Attack(AttackType.Circle, Bullets[i], 12, 10, 0.1f, 2f, Random.Range(2, 4));

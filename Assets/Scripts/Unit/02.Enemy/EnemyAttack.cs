@@ -194,7 +194,7 @@ public class EnemyAttack : UnitAttack
         for (int i = 0; i < times; i++)
         {
             float randomX = Random.Range(-19f, 19f);
-            float randomZ = Random.Range(-19f, 19f);
+            float randomZ = Random.Range(-13f, 13f);
             var enemy = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,new Vector3(randomX,0.7f,randomZ),Quaternion.identity);
             yield return new WaitForSeconds(delay);
         }
