@@ -85,8 +85,7 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(4, 7));
                     break;
                 case 2:
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,2);
-                    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 5, 2);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,1);
                     break;
                 case 3:
                     Attack(AttackType.Sector, Bullets[2], 6, 10, 0.1f, 2, 3, FindRandom(), 50);
@@ -98,11 +97,11 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Sector, Bullets[2], 12, 5, 8, 2, 10, ThisUnit.gameObject, 75);
                     break;
                 case 6:
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,3);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,2);
                     //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3, 2);
                     break;
                 case 7:
-                    Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 2, 6);
+                    Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 1, 6);
                     break;
                 default:
                     break;
@@ -117,7 +116,7 @@ public class BossAttack : EnemyAttack
                     break;
                 case 2:
                     //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2, 3);
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,1);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,1);
                     break;
                 case 3:
                     Attack(AttackType.Sector, Bullets[2], 3, 10, 0.1f, 2, 3, FindRandom(), 45);
@@ -128,10 +127,6 @@ public class BossAttack : EnemyAttack
                 case 5:
                     Attack(AttackType.Sector, Bullets[2], 6, 5, 8, 2, 6, ThisUnit.gameObject, 60);
                     break;
-                //case 6:
-                //    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,0f,1);
-                //    //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 0);
-                //    break;
                 case 6:
                 case 7:
                     Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2, 3);

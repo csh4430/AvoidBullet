@@ -22,20 +22,19 @@ public class BossBase : EnemyBase
         {
             attack.Bullets.Add(Bullets[(int)e]);
         }
-        if (isFinalBoss)
+        if (!isFinalBoss)
         {
-            state.Stat.MaxHealth = 2000;
-            state.Stat.Health = 2000;
+            state.Stat.MaxHealth = 1500;
+            state.Stat.Health = 1500;
             state.Stat.Atk = 10;
         }
         else
         {
-            state.Stat.MaxHealth = 2500;
-            state.Stat.Health = 2500;
+            state.Stat.MaxHealth = 2000;
+            state.Stat.Health = 2000;
             state.Stat.Atk = 8;
         }
         base.Awake();
-
     }
 
     protected override void Init()

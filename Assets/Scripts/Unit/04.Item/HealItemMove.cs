@@ -9,6 +9,7 @@ public class HealItemMove : UnitMove
     {
         base.Awake();
         mainPos = ThisUnit.transform.position;
+        ThisUnit.transform.Translate(new Vector3(0, 0, 3));
     }
 
     public override void Update()
@@ -18,6 +19,6 @@ public class HealItemMove : UnitMove
 
     protected override void Translate()
     {
-        ThisUnit.transform.RotateAround(mainPos, Vector3.right, 30f);
+        ThisUnit.transform.RotateAround(mainPos, Vector3.up, ThisUnit.State.Stat.Spd);
     }
 }
