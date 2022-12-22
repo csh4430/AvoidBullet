@@ -60,6 +60,13 @@ public class UnitRender : UnitBehaviour
         GameManager.Instance.GetManager<PoolManager>().EnqueueObject(ThisUnit.gameObject);
 
     }
+    public void Clear()
+    {
+        isDead = false;
+        isInCoroutine = false;
+        outlineMaterial.color = originalColor;
+        light.color = originalLight;
+    }
     IEnumerator SwitchColorCoroutine(Color originalColor, Color originalLight, float alpha1, Color nextColor, Color nextLight, float alpha2, float time, Action callback = null)
     {
         SetColor(nextColor, nextLight, alpha2);

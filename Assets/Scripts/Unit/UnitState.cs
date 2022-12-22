@@ -43,6 +43,12 @@ public class UnitState : UnitBehaviour
         if (NowState.HasFlag(StateEnum.Death)) return;
         SetState(StateEnum.Death);
     }
+
+    public void Clear()
+    {
+        NowState = StateEnum.None;
+        ThisUnit.GetBehaviour<UnitRender>().Clear();
+    }
     public void SetState(StateEnum state)
     {
         NowState |= state;
