@@ -7,11 +7,9 @@ public class SoldierBase : EnemyBase
     protected override void Awake()
     {
         base.Init();
-        var attack = AddBehaviour<SoldierAttack>(); 
+        var attack = AddBehaviour<SoldierAttack>();
         AddBehaviour<UnitRender>();
-        state.Stat.MaxHealth = 40;
-        state.Stat.Health = 40;
-        state.Stat.Atk = 5;
+
         for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
         {
             attack.Bullets.Add(Bullets[(int)e]);
@@ -22,6 +20,14 @@ public class SoldierBase : EnemyBase
     protected override void Init()
     {
         base.Init();
+    }
+
+    protected override void OnEnable()
+    {
+        state.Stat.MaxHealth = 40;
+        state.Stat.Health = 40;
+        state.Stat.Atk = 5;
+        base.OnEnable();
     }
 
     protected override void Start()

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance = null;
     private Sequence seq;
     private ColorAdjustments adjustments;
+    private Sound sound;
     public static GameManager Instance
     {
         get
@@ -48,11 +49,13 @@ public class GameManager : MonoBehaviour
         AddManager<MapManager>();
         AddManager<PoolManager>();
         AddManager<UIManager>().StayUIMgr.FadeUI.State = FadeState.FADE_IN;
+        sound = FindObjectOfType<Sound>();
     }
 
     private void Start()
     {
         _inGameVolume.profile.TryGet(out adjustments);
+        sound.PlayBgm(SoundType.BgmType.Tuto);
     }
 
     private void Update()

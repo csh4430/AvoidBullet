@@ -6,7 +6,7 @@ public class BossAttack : EnemyAttack
 {
     public float Delay { get; set; } = 1.5f;
 
-    private float currentTime = 0f;
+    private float currentTime = 1.5f;
 
     private int phase = 1;
 
@@ -18,7 +18,6 @@ public class BossAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
-        Attack();
     }
 
     public override void Update()
