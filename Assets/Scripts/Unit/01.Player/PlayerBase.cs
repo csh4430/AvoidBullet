@@ -24,7 +24,7 @@ public class PlayerBase : UnitBase
         //AddBehaviour<PlayerRotate>().RotateSpeed = 100f;
         attack = AddBehaviour<PlayerAttack>();
         attack.projectilePrefab = _bulletPrefab;
-         AddBehaviour<UnitRender>().DeathParticle = _deathParticlePrefab;
+        AddBehaviour<UnitRender>().DeathParticle = _deathParticlePrefab;
 
         base.Awake();
     }

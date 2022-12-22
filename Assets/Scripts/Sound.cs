@@ -54,6 +54,8 @@ public class Sound : MonoBehaviour
     }
     private void SetSource()
     {
+        SoundsEff.Clear();
+        SoundsBgm.Clear();
         int i = 1;
         foreach (AudioClip clip in effAudioClips)
         {
