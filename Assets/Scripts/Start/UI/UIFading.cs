@@ -10,7 +10,7 @@ public class UIFading : UIBehaviour
 {
     private Image thisImage;
     public float Duration = 1f;
-
+    public List<GameObject> disableOnFadeIn = new List<GameObject>();
     public override void Awake()
     {
         thisImage = ThisUI.GetComponent<Image>();
@@ -19,6 +19,10 @@ public class UIFading : UIBehaviour
     public void FadeIn()
     {
         thisImage.DOFade(0, Duration).SetEase(Ease.InSine);
+        foreach (var item in disableOnFadeIn)
+        {
+            item.SetActive(false);
+        }
     }
     
     public void FadeOut(int sceneIdx)

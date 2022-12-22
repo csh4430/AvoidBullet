@@ -18,6 +18,7 @@ public class PlayerBase : UnitBase
         state.Stat.MaxHealth = 100;
         state.Stat.Health = 100;
         state.Stat.Atk = 10;
+        state.OnDeath += StayUIMgr.Instance.Restart;
 
         AddBehaviour<PlayerInput>();
         AddBehaviour<PlayerMove>().Speed = State.Stat.Spd;
@@ -25,7 +26,6 @@ public class PlayerBase : UnitBase
         attack = AddBehaviour<PlayerAttack>();
         attack.projectilePrefab = _bulletPrefab;
         AddBehaviour<UnitRender>().DeathParticle = _deathParticlePrefab;
-
         base.Awake();
     }
 

@@ -23,7 +23,8 @@ public class UnitState : UnitBehaviour
     [field : SerializeField]
     public StateEnum NowState { get; private set; }
 
-    public void Damage(float value)
+    public Action OnDeath { get; set; }
+        public void Damage(float value)
     {
         if (NowState.HasFlag(StateEnum.Damage)) return;
         if (NowState.HasFlag(StateEnum.Death)) return;
@@ -44,6 +45,7 @@ public class UnitState : UnitBehaviour
         if (NowState.HasFlag(StateEnum.Death)) return;
         SetState(StateEnum.Death);
         Sound.PlayEff(SoundType.EffType.Die);
+        OnDeath?.Invoke();
     }
 
     public void Clear()

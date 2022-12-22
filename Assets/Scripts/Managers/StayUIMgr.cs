@@ -51,8 +51,6 @@ public class StayUIMgr : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-            Restart();
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (isMenuOpen)
