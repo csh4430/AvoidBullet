@@ -18,12 +18,10 @@ public class GameManager : MonoBehaviour
         get
         {
             if (_instance is not null) return _instance;
-            _instance = GameObject.FindObjectOfType<GameManager>() ??
-                        new GameObject("GameManager").AddComponent<GameManager>();
             return _instance;
         }
     }
-
+    
     public T AddManager<T>() where T : Manager, new()
     {
         var manager = new T();
@@ -44,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _instance = this;
         managers = new Dictionary<Type, Manager>();
         AddManager<MapManager>();
         AddManager<PoolManager>();

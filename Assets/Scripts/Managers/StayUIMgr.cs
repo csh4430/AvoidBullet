@@ -58,6 +58,7 @@ public class StayUIMgr : MonoBehaviour
     public void Pause()
     {
         isChanging = true;
+        _inGameVolume.enabled = true;
         seq = DOTween.Sequence();
         _pauseCanvas.SetActive(true);
         seq.SetUpdate(true);
@@ -82,6 +83,7 @@ public class StayUIMgr : MonoBehaviour
             isChanging = false;
             seq.Kill();
             _pauseCanvas.SetActive(false);
+            _inGameVolume.enabled = false;
         });
     }
 }
