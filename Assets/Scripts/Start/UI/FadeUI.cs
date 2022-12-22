@@ -57,9 +57,4 @@ public class FadeUI : UIComponent
     {
         sceneIdx = idx;
     }
-    
-    public void SubIndex(int value)
-    {
-        sceneIdx -= value;
-    }
 }
