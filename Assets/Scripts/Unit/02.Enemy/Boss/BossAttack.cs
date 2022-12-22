@@ -58,17 +58,22 @@ public class BossAttack : EnemyAttack
  
     private int Phase(float curHealth, float maxHealth)
     {
+        int nextPhase = 0;
         switch (curHealth)
         {
             case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth:
-                return 1;
+                nextPhase = 1;
+                break;
             case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 2:
-                return 2;
+                nextPhase = 2;
+                break;
             case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth / 3:
-                return 3;
+                nextPhase = 3;
+                break;
         }
-        Debug.LogError("incorrect boss hp");
-        return -1;
+        if (phase != nextPhase)
+            Debug.Log("Phase has changed. Now Phase : " + nextPhase);
+        return nextPhase;
     }
 
 
@@ -76,7 +81,7 @@ public class BossAttack : EnemyAttack
     {
         int rand = Random.Range(1, 8);
         int i = Random.Range(0, 3);
-        Debug.Log($"PhaseOne Pattern : {rand}");
+        //Debug.Log($"PhaseOne Pattern : {rand}");
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
             switch (rand)
@@ -141,7 +146,7 @@ public class BossAttack : EnemyAttack
     {
         int rand = Random.Range(1, 4);
         int i = Random.Range(1, 4);
-        Debug.Log($"PhaseTwo Pattern : {rand}");
+        //Debug.Log($"PhaseTwo Pattern : {rand}");
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
             switch (rand)
@@ -180,7 +185,6 @@ public class BossAttack : EnemyAttack
     private void PhaseThree()
     {
         int i = Random.Range(1, 4);
-        Debug.Log($"PhaseThree");
         //최종보스
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {

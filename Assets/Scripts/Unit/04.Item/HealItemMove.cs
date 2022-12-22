@@ -10,8 +10,9 @@ public class HealItemMove : UnitMove
         base.Awake();
         mainPos = ThisUnit.transform.position;
         ThisUnit.transform.Translate(new Vector3(0, 0, 3));
-        ThisUnit.gameObject.layer = Random.Range(0, 2) == 0 ? LayerMask.NameToLayer("Player_1") : LayerMask.NameToLayer("Player_2");
-        //Debug.Log("Current layer: " + ThisUnit.gameObject.layer);
+        int rand = Random.Range(1, 3);
+        ThisUnit.gameObject.layer = rand == 1  ? LayerMask.NameToLayer("Player_1") : LayerMask.NameToLayer("Player_2");
+        //Debug.Log("Current layer: " + ThisUnit.gameObject.layer + " " +rand );
     }
 
     public override void Update()

@@ -195,19 +195,7 @@ public class EnemyAttack : UnitAttack
         {
             float randomX = Random.Range(-19f, 19f);
             float randomZ = Random.Range(-19f, 19f);
-            //Instantiate(prefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
             var enemy = GameManager.Instance.GetManager<PoolManager>().ReuseObject(prefab,new Vector3(randomX,0.7f,randomZ),Quaternion.identity);
-            yield return new WaitForSeconds(delay);
-        }
-    }
-    protected IEnumerator DashAttack(GameObject prefab, int n, float speed, float delay, int times)
-    {
-        for (var t = 0; t < times; t++)
-        {
-            for (var i = 0; i < n; i++)
-            {
-                var move = ThisUnit.GetComponent<UnitMove>();
-            }
             yield return new WaitForSeconds(delay);
         }
     }
