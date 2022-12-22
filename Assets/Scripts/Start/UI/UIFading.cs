@@ -23,6 +23,17 @@ public class UIFading : UIBehaviour
     
     public void FadeOut(int sceneIdx)
     {
-        thisImage.DOFade(1, Duration).SetEase(Ease.OutSine).OnComplete(() => SceneManager.LoadScene(sceneIdx));
+        thisImage.DOFade(1, Duration).SetEase(Ease.OutSine).OnComplete(() =>
+        {
+            if(sceneIdx == -1)
+            {
+                Application.Quit();
+                DOTween.KillAll();
+                return;
+            }
+            SceneManager.LoadScene(sceneIdx);
+            DOTween.KillAll();
+            FadeIn();
+        });
     }
 }
