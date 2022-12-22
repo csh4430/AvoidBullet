@@ -249,9 +249,9 @@ GameObject:
   - component: {fileID: 70187617}
   - component: {fileID: 70187619}
   - component: {fileID: 70187618}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Trail Particle
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,7 +533,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5372549, g: 1, b: 0.4862745, a: 1}
+      maxColor: {r: 0.9803922, g: 0.9803922, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10044,7 +10044,7 @@ GameObject:
   - component: {fileID: 318255809}
   - component: {fileID: 318255811}
   - component: {fileID: 318255810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10289,7 +10289,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329420491}
-  m_LocalRotation: {x: -0.000000043536012, y: 0.8666285, z: -0.498954, w: -0.00000007561729}
+  m_LocalRotation: {x: 0.000000011245075, y: 0.86662847, z: -0.49895403, w: 0.000000019531461}
   m_LocalPosition: {x: 3.8600006, y: 20.7, z: 10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10630,8 +10630,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.498954, y: -0.00000005376432, z: 0.000000030954354, w: 0.8666285}
-  m_LocalPosition: {x: -4.2, y: 20.7, z: -17.6}
+  m_LocalRotation: {x: 0.000000011245075, y: 0.86662847, z: -0.49895403, w: 0.000000019531461}
+  m_LocalPosition: {x: 3.8600006, y: 20.7, z: 10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10809,7 +10809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140052266}
   - component: {fileID: 1140052267}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: CM vcam2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10823,7 +10823,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140052265}
-  m_LocalRotation: {x: 0.498954, y: 0.00000007561729, z: -0.000000043536012, w: 0.8666285}
+  m_LocalRotation: {x: 0.49895403, y: -0.000000019531461, z: 0.000000011245075, w: 0.86662847}
   m_LocalPosition: {x: 0, y: 40, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -11226,7 +11226,7 @@ GameObject:
   - component: {fileID: 1331680048}
   - component: {fileID: 1331680050}
   - component: {fileID: 1331680049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11550,7 +11550,7 @@ GameObject:
   - component: {fileID: 1394182751}
   - component: {fileID: 1394182753}
   - component: {fileID: 1394182752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11767,7 +11767,7 @@ GameObject:
   - component: {fileID: 1436737138}
   - component: {fileID: 1436737140}
   - component: {fileID: 1436737139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21450,7 +21450,7 @@ GameObject:
   - component: {fileID: 1507579824}
   - component: {fileID: 1507579823}
   - component: {fileID: 1507579822}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: HealItem
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -21651,7 +21651,7 @@ GameObject:
   - component: {fileID: 1582479706}
   - component: {fileID: 1582479708}
   - component: {fileID: 1582479707}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22428,7 +22428,7 @@ GameObject:
   - component: {fileID: 1895004425}
   - component: {fileID: 1895004427}
   - component: {fileID: 1895004426}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22725,7 +22725,7 @@ GameObject:
   - component: {fileID: 1997717241}
   - component: {fileID: 1997717243}
   - component: {fileID: 1997717242}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22809,7 +22809,7 @@ GameObject:
   - component: {fileID: 2063035123}
   - component: {fileID: 2063035122}
   - component: {fileID: 2063035121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

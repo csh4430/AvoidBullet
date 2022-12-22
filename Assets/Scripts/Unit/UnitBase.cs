@@ -69,7 +69,6 @@ public class UnitBase : MonoBehaviour
             behaviour.OnEnable();
         }
     }
-
     protected virtual void Update()
     {
         if(behaviours.Count == 0)
@@ -81,7 +80,17 @@ public class UnitBase : MonoBehaviour
             behaviour.Update();
         }
     }
-
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (behaviours.Count == 0)
+        {
+            return;
+        }
+        foreach (var behaviour in behaviours.Values)
+        {
+            behaviour.OnTriggerEnter(other);
+        }
+    }
     public static bool operator==(UnitBase thisUnit, BulletTarget target)
     {
         return target.HasFlag(Enum.Parse<BulletTarget>(thisUnit.tag));

@@ -8,6 +8,8 @@ public class PlayerBase : UnitBase
     [SerializeField] private GameObject _bulletPrefab;
     [field: SerializeField] public bool IsFirstPlayer { get; set; } = true;
 
+    private PlayerAttack attack;
+
     protected override void Awake()
     {
         base.Init();
@@ -19,7 +21,8 @@ public class PlayerBase : UnitBase
         AddBehaviour<PlayerInput>();
         AddBehaviour<PlayerMove>().Speed = State.Stat.Spd;
         //AddBehaviour<PlayerRotate>().RotateSpeed = 100f;
-        AddBehaviour<PlayerAttack>().projectilePrefab = _bulletPrefab;
+        attack = AddBehaviour<PlayerAttack>();
+        attack.projectilePrefab = _bulletPrefab;
         AddBehaviour<UnitRender>();
         base.Awake();
     }

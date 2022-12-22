@@ -11,7 +11,15 @@ public class PlayerAttack : UnitAttack
     {
         base.Awake();   
     }
-
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.CompareTag("Item"))
+        {
+            other.gameObject.GetComponent<HealItemBase>().move.ThisUnit.State.Die();
+            ThisUnit.State.Stat.Health = Mathf.Min(ThisUnit.State.Stat.Health + 10, 100);
+        }
+    }
     public override void Start()
     {
         base.Start();
