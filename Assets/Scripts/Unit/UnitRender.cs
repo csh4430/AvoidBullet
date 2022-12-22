@@ -57,8 +57,9 @@ public class UnitRender : UnitBehaviour
     public void Die()
     {
         isDead = true;
-        GameManager.Instance.GetManager<PoolManager>().EnqueueObject(ThisUnit.gameObject);
 
+        GameManager.Instance.GetManager<PoolManager>().ReuseObject(DeathParticle, ThisUnit.transform.position, Quaternion.Euler(-90, 0, 0));
+        GameManager.Instance.GetManager<PoolManager>().EnqueueObject(ThisUnit.gameObject);
     }
     public void Clear()
     {

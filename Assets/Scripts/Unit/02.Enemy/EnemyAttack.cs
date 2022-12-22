@@ -110,6 +110,8 @@ public class EnemyAttack : UnitAttack
     }
     protected IEnumerator SectorAttack(GameObject prefab, GameObject target, int n, float speed, float radius, float angle, float delay, int times)
     {
+        if (target is null)
+            yield break;
         for (var t = 0; t < times; t++)
         {
             var offset = n % 2 == 0 ? 0 : 0.5f;
@@ -154,6 +156,8 @@ public class EnemyAttack : UnitAttack
     }
     protected IEnumerator RingAttack(GameObject prefab, GameObject target, int n, float speed, float raidus, float delay, int times)
     {
+        if(target is null)
+            yield break;
         for (var t = 0; t < times; t++)
         {
             for (var i = 0; i < n; i++)
@@ -174,6 +178,8 @@ public class EnemyAttack : UnitAttack
     }
     protected IEnumerator TargetAttack(GameObject prefab, GameObject target, int n, float speed, float delay, int times)
     {
+        if (target is null)
+            yield break;
         for (var t = 0; t < times; t++)
         {
             for (var i = 0; i < n; i++)
