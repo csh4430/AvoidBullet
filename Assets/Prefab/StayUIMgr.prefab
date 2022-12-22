@@ -313,6 +313,7 @@ MonoBehaviour:
   state: 0
   _pauseObject: {fileID: 7117601041171450557}
   _rewindObject: {fileID: 2950027640655401558}
+  _finishObject: {fileID: 0}
 --- !u!1 &6447304404611063420
 GameObject:
   m_ObjectHideFlags: 0

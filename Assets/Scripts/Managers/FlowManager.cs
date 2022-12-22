@@ -35,7 +35,7 @@ public class FlowManager : MonoBehaviour
     private PoolManager poolMgr = null;
     //0 : move tuto 1 : shoot tuto 2 : mid boss 3 : finalboss 4 : ending
     private static int step = 0;
-    private Action[] stepActions;
+    private Action[] stepActions = new Action[5];
     private void Awake()
     {
         poolMgr = GameManager.Instance.GetManager<PoolManager>();
@@ -45,6 +45,7 @@ public class FlowManager : MonoBehaviour
     private void Start()
     {
         Init();
+        NextStep();
     }
     public void Init()
     {
@@ -86,7 +87,7 @@ public class FlowManager : MonoBehaviour
     private void Ending()
     {
         Sound.PlayBgm(SoundType.BgmType.End);
-        endingPanel.SetActive(true);
+        ResultData.Instance.End();
     }
     private void Heal(float healAmount = 0)
     {
