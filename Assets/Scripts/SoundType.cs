@@ -18,7 +18,8 @@ namespace SoundType
         Title,
         Tuto,
         MidBoss,
-        FinalBoss
+        FinalBoss,
+        End
     }
     public class SoundType {}
 }

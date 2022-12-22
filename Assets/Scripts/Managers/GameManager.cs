@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 {
     private Dictionary<Type, Manager> managers;
     private static GameManager _instance = null;
-    private Sound sound;
 
     public static GameManager Instance
     {
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviour
         AddManager<MapManager>();
         AddManager<PoolManager>();
         AddManager<UIManager>().StayUIMgr.FadeUI.State = FadeState.FADE_IN;
-        sound = FindObjectOfType<Sound>();
     }
     private void Start()
     {

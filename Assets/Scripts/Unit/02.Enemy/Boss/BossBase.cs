@@ -17,6 +17,7 @@ public class BossBase : EnemyBase
     {
         base.Init();
         var attack = AddBehaviour<BossAttack>();
+        state.OnDeath += FlowManager.Instance.NextStep;
         AddBehaviour<UnitRender>();
         for (var e = BulletEnum.Enemy_Player_1; e <= BulletEnum.Enemy_Bigger; e++)
         {
@@ -54,5 +55,5 @@ public class BossBase : EnemyBase
         base.Update();
     }
 
-
+    
 }
