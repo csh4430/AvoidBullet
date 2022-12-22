@@ -25,6 +25,9 @@ public class PoolManager : Manager
     
     public GameObject ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
     {
+        
+        if (prefab == null)
+            return null;
         var poolKey = prefab.name;
         
         if (poolDictionary.ContainsKey(poolKey))

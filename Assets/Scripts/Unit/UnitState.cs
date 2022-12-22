@@ -39,7 +39,7 @@ public class UnitState : UnitBehaviour
         }
     }
     
-    public void Die()
+    public virtual void Die()
     {
         if (NowState.HasFlag(StateEnum.Death)) return;
         SetState(StateEnum.Death);

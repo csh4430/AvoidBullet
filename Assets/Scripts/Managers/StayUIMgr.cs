@@ -13,6 +13,8 @@ public class StayUIMgr : MonoBehaviour
     [SerializeField] private GameObject _pauseCanvas;
     [SerializeField] private Volume _inGameVolume;
     public bool isChanging = false;
+    [NonSerialized]
+    public bool isMenuOpen = false;
     private Sequence seq;
     private ColorAdjustments adjustments;
 
@@ -37,6 +39,8 @@ public class StayUIMgr : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            if (isMenuOpen)
+                return;
             if (_pauseCanvas.activeInHierarchy && !isChanging)
             {
                 Resume();

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerBase : UnitBase
 {
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private GameObject _deathParticlePrefab;
     [field: SerializeField] public bool IsFirstPlayer { get; set; } = true;
 
     private PlayerAttack attack;
@@ -23,7 +24,8 @@ public class PlayerBase : UnitBase
         //AddBehaviour<PlayerRotate>().RotateSpeed = 100f;
         attack = AddBehaviour<PlayerAttack>();
         attack.projectilePrefab = _bulletPrefab;
-        AddBehaviour<UnitRender>();
+         AddBehaviour<UnitRender>().DeathParticle = _deathParticlePrefab;
+
         base.Awake();
     }
 
