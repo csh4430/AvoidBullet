@@ -71,10 +71,10 @@ public class BossAttack : EnemyAttack
                 nextPhase = 1; 
                 break;
         }
-        if (phase != nextPhase)
-            Debug.Log("Phase has changed. Now Phase : " + nextPhase);
-        else
-            Debug.Log(phase);
+        //if (phase != nextPhase)
+        //    Debug.Log("Phase has changed. Now Phase : " + nextPhase);
+        //else
+        //    Debug.Log(phase);
         return nextPhase;
     }
 

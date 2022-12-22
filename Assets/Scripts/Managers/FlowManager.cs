@@ -16,7 +16,6 @@ public class FlowManager : MonoBehaviour
     [SerializeField]
     private GameObject endingPanel;
 
-    private HealItemBase heal;
     private SoldierBase enemy1;
     private SoldierBase enemy2;
 
@@ -40,7 +39,6 @@ public class FlowManager : MonoBehaviour
     {
         poolMgr = GameManager.Instance.GetManager<PoolManager>();
         GameManager.Instance.GetManager<PoolManager>().CreatePool(soldierPrefab, 2);
-        GameManager.Instance.GetManager<PoolManager>().CreatePool(healPrefab, 1);
     }
     private void Start()
     {
@@ -62,13 +60,14 @@ public class FlowManager : MonoBehaviour
     private void MoveTuto()
     {
         moveTextPanel.SetActive(true);
+        StartCoroutine(NextTuto());
     }
     private void ShootTuto()
     {
         moveTextPanel.SetActive(false);
+        StopCoroutine(NextTuto());
         enemy1 = poolMgr.ReuseObject(soldierPrefab, new Vector3(1, 0.7f, 0), Quaternion.identity).GetComponent<SoldierBase>();
         enemy2 = poolMgr.ReuseObject(soldierPrefab, new Vector3(-1, 0.7f, 0), Quaternion.identity).GetComponent<SoldierBase>();
-        heal = poolMgr.ReuseObject(healPrefab, new Vector3(0, 0.7f, 0), Quaternion.identity).GetComponent<HealItemBase>();
         StartCoroutine(CheckEndTuto());
     }
     private void MidBoss()
@@ -100,11 +99,16 @@ public class FlowManager : MonoBehaviour
                 player.State.Stat.Health = Math.Clamp(player.State.Stat.Health + healAmount, 0, 100);
         }
     }
+    private IEnumerator NextTuto()
+    {
+        yield return new WaitForSeconds(2f);
+        NextStep();
+    }
     private IEnumerator CheckEndTuto()
     {
         while (true)
         {
-            if (enemy1.State.NowState == StateEnum.Death && enemy2.State.NowState == StateEnum.Death && heal.State.NowState == StateEnum.Death)
+            if (enemy1.State.NowState == StateEnum.Death && enemy2.State.NowState == StateEnum.Death)
             {
                 NextStep();
                 break;
