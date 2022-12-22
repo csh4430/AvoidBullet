@@ -12,7 +12,15 @@ public class HealItemBase : UnitBase
         state.Stat.MaxHealth = 1000;
         state.Stat.Health = 1000;
         state.Stat.Spd = 2f;
+        state.OnDeath += DeathEFF;
+
         AddBehaviour<UnitRender>();
         base.Awake();
+    }
+
+    private void DeathEFF()
+    {
+        Sound.StopEff(SoundType.EffType.Die);
+        Sound.PlayEff(SoundType.EffType.Item);
     }
 }

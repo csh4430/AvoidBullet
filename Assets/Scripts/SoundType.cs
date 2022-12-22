@@ -10,6 +10,7 @@ namespace SoundType
         Dash,
         Bomb,
         Die,
+        Item,
     }
     public enum BgmType
     {

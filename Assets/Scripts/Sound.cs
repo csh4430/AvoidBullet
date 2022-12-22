@@ -22,15 +22,11 @@ public class Sound : MonoBehaviour
     private static List<AudioSource> SoundsEff = new List<AudioSource>();
     private static List<AudioSource> SoundsBgm = new List<AudioSource>();
 
-    //exposed parameters의 파라미터들의 이름.
-    private string bgm_Group = "Music";
-    private string eff_Group = "Effect";
-    private string master_Group = "Master";
-
     private static AudioSource lastPlayBgm;
     private void Awake()
     {
         SetSource();
+        DontDestroyOnLoad(this);
     }
     public static void PlayBgm(SoundType.BgmType value)
     {

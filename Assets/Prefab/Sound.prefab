@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
   - {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
   - {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
+  - {fileID: 8300000, guid: a0ca8964c08d54c5dbebf245bdc474ca, type: 3}
   bgmAudioClips:
   - {fileID: 8300000, guid: a4a52cb59b101364d83758f17d08b843, type: 3}
   - {fileID: 8300000, guid: 6cb0928a40ef9c243b0c3df66794f6d7, type: 3}
