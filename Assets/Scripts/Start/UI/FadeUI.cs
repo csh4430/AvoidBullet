@@ -20,6 +20,8 @@ public class FadeUI : UIComponent
         get => state; 
         set => state = value;
     }
+    [SerializeField] private GameObject _pauseObject;
+    [SerializeField] private GameObject _rewindObject;
 
     private int sceneIdx = 0;
     
@@ -29,6 +31,8 @@ public class FadeUI : UIComponent
     {
         fading = AddBehaviour<UIFading>();
         fading.Duration = 1.5f;
+        fading.disableOnFadeIn.Add(_pauseObject);
+        fading.disableOnFadeIn.Add(_rewindObject);
         base.Awake();
     }
 
