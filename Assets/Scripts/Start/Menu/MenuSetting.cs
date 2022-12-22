@@ -13,12 +13,14 @@ public class MenuSetting : Menu
     public override void Interactive()
     {
         IsOpen = true;
+        GameObject.FindObjectOfType<StayUIMgr>().isMenuOpen = true;
         StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
     public override void Deinteractive()
     {
         IsOpen = false;
+        GameObject.FindObjectOfType<StayUIMgr>().isMenuOpen = false;
         StartSceneMgr.Sound.PlayEff(SoundType.EffType.ClickBtn);
     }
 
