@@ -27,7 +27,6 @@ public class StayUIMgr : MonoBehaviour
     [SerializeField] private GameObject _rewindObject;
     [SerializeField] private Volume _inGameVolume;
     public bool isChanging = false;
-    [NonSerialized]
     public bool isMenuOpen = false;
     private Sequence seq;
     private ColorAdjustments adjustments;
@@ -51,10 +50,11 @@ public class StayUIMgr : MonoBehaviour
     }
     private void Update()
     {
+        if (isMenuOpen)
+            return;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isMenuOpen)
-                return;
+            
             if (_pauseObject.activeInHierarchy && !isChanging)
             {
                 Resume();
@@ -65,6 +65,11 @@ public class StayUIMgr : MonoBehaviour
             }
         }
 
+        
+    }
+
+    private void LateUpdate()
+    {
         if (_pauseObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Return))
         {
             Resume();
@@ -75,6 +80,8 @@ public class StayUIMgr : MonoBehaviour
 
     public void Pause()
     {
+        if (isMenuOpen)
+            return;
         isChanging = true;
         _inGameVolume.enabled = true;
         seq = DOTween.Sequence();

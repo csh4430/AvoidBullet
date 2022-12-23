@@ -41,7 +41,7 @@ public class StartSceneMgr : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
