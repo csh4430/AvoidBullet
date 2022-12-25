@@ -43,8 +43,7 @@ public class BossAttack : EnemyAttack
                     PhaseTwo();
                     break;
                 case 3:
-                    if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
-                        PhaseThree();
+                    PhaseThree();
                     break;
             }
         }
@@ -55,7 +54,7 @@ public class BossAttack : EnemyAttack
         GameObject player2 = GameObject.FindGameObjectWithTag("Player_2");
         return Random.Range(1, 3) == 1 ? player1 : player2;
     }
- 
+
     private int Phase(float curHealth, float maxHealth)
     {
         int nextPhase = 0;
@@ -68,13 +67,11 @@ public class BossAttack : EnemyAttack
                 nextPhase = 2;
                 break;
             case var _ when curHealth <= ThisUnit.State.Stat.MaxHealth:
-                nextPhase = 1; 
+                nextPhase = 1;
                 break;
         }
-        //if (phase != nextPhase)
-        //    Debug.Log("Phase has changed. Now Phase : " + nextPhase);
-        //else
-        //    Debug.Log(phase);
+        if (phase != nextPhase && nextPhase ==3 && ThisUnit.GetComponent<BossBase>().isFinalBoss==false)
+            Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().HealPrefab, 1, 5, 0.1f, 2f, 3);
         return nextPhase;
     }
 
@@ -92,23 +89,23 @@ public class BossAttack : EnemyAttack
                     Attack(AttackType.Circle, Bullets[i], 6, 10, 0.1f, 1f, Random.Range(4, 7));
                     break;
                 case 2:
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab,1,10,0.1f,2f,1);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().SoldierPrefab, 1, 10, 0.1f, 2f, 1);
                     break;
                 case 3:
-                    Attack(AttackType.Sector, Bullets[2], 6, 10, 0.1f, 2, 3, FindRandom(), 50);
+                    Attack(AttackType.Sector, Bullets[2], 6, 5, 0.1f, 2, 3, FindRandom(), 50);
                     break;
                 case 4:
                     Attack(AttackType.Ring, Bullets[2], 6, 5, 8, 3, 3, FindRandom());
                     break;
                 case 5:
-                    Attack(AttackType.Sector, Bullets[2], 12, 5, 8, 2, 10, ThisUnit.gameObject, 75);
+                    Attack(AttackType.Sector, Bullets[2], 12, 3, 8, 2, 10, ThisUnit.gameObject, 75);
                     break;
                 case 6:
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,2);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 10, 0.1f, 2f, 2);
                     //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().BombPrefab, 3, 2);
                     break;
                 case 7:
-                    Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 1, 6);
+                    Attack(AttackType.Spin, Bullets[i], 15, 10, 0.1f, 1, 6, null, 45);
                     break;
                 default:
                     break;
@@ -123,20 +120,20 @@ public class BossAttack : EnemyAttack
                     break;
                 case 2:
                     //InstantiateEnemy(ThisUnit.GetComponent<BossBase>().SoldierPrefab, 2, 3);
-                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab,1,10,0.1f,2f,1);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().BombPrefab, 1, 10, 0.1f, 2f, 1);
                     break;
                 case 3:
-                    Attack(AttackType.Sector, Bullets[2], 3, 10, 0.1f, 2, 3, FindRandom(), 45);
+                    Attack(AttackType.Sector, Bullets[2], 3, 5, 0.1f, 2, 3, FindRandom(), 45);
                     break;
                 case 4:
                     Attack(AttackType.Ring, Bullets[2], 4, 5, 8, 3, 3, FindRandom());
                     break;
                 case 5:
-                    Attack(AttackType.Sector, Bullets[2], 6, 5, 8, 2, 6, ThisUnit.gameObject, 60);
+                    Attack(AttackType.Instantiate, ThisUnit.GetComponent<BossBase>().HealPrefab, 1, 5, 0.1f, 2f, 1);
                     break;
                 case 6:
                 case 7:
-                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2, 3);
+                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 2, 3, null, 40);
                     break;
                 default:
                     Debug.LogError("rand is Out of range!");
@@ -154,10 +151,10 @@ public class BossAttack : EnemyAttack
             switch (rand)
             {
                 case 1:
-                    Attack(AttackType.Target, Bullets[2], 3, 10, 0.1f, 2, Random.Range(1, 4), FindRandom());
+                    Attack(AttackType.Target, Bullets[2], 3, 3, 0.1f, 2, Random.Range(1, 4), FindRandom());
                     break;
                 case 2:
-                    Attack(AttackType.Target, Bullets[2], 5, 5, 0.1f, 2, 1, FindRandom());
+                    Attack(AttackType.Sector, Bullets[2], 6, 5, 0.1f, 2, 3, FindRandom(), 50);
                     break;
                 case 3:
                     Attack(AttackType.Ring, Bullets[i], 6, 3, 8, 3, 1, FindRandom());
@@ -171,10 +168,9 @@ public class BossAttack : EnemyAttack
             switch (rand)
             {
                 case 1:
-                    Attack(AttackType.Target, Bullets[2], 4, 10, 0.1f, 2f, 1, FindRandom());
                     break;
                 case 2:
-                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 1f, Random.Range(1, 3));
+                    Attack(AttackType.Spin, Bullets[i], 10, 10, 0.1f, 1f, Random.Range(1, 3), null, 40);
                     break;
                 case 3:
                     Attack(AttackType.Circle, Bullets[i], 12, 10, 0.1f, 2f, Random.Range(2, 4));
@@ -190,7 +186,7 @@ public class BossAttack : EnemyAttack
         //최종보스
         if (ThisUnit.gameObject.GetComponent<BossBase>().isFinalBoss)
         {
-            Attack(AttackType.Spin, Bullets[i], 30, 10, 0.1f, 0.5f, 1);
+            Attack(AttackType.Spin, Bullets[i], 30, 10, 10f, 0.1f, 1, null, 40);
         }
     }
 }

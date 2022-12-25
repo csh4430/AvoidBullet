@@ -16,8 +16,8 @@ public class PlayerAttack : UnitAttack
         base.OnTriggerEnter(other);
         if (other.CompareTag("Item"))
         {
-            other.gameObject.GetComponent<HealItemBase>().move.ThisUnit.State.Die();
             ThisUnit.State.Stat.Health = Mathf.Min(ThisUnit.State.Stat.Health + 10, 100);
+            other.gameObject.GetComponent<HealItemBase>()?.move.ThisUnit.State.Die();
         }
     }
     public override void Start()
@@ -31,7 +31,6 @@ public class PlayerAttack : UnitAttack
     public override void Update()
     {
         base.Update();
-        //Attack();
     }
 
     public override void Attack()

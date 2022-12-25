@@ -10,7 +10,9 @@ public class BossBase : EnemyBase
 
     [SerializeField] private GameObject soldierPrefab;
     [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private GameObject healPrefab;
 
+    public GameObject HealPrefab => healPrefab;
     public GameObject BombPrefab => bombPrefab;
     public GameObject SoldierPrefab => soldierPrefab;
     protected override void Awake()
@@ -47,6 +49,7 @@ public class BossBase : EnemyBase
     {
         GameManager.Instance.GetManager<PoolManager>().CreatePool(bombPrefab, 5);
         GameManager.Instance.GetManager<PoolManager>().CreatePool(soldierPrefab, 5);
+        GameManager.Instance.GetManager<PoolManager>().CreatePool(healPrefab, 5);
         base.Start();
     }
 

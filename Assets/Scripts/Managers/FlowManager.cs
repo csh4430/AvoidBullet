@@ -33,17 +33,12 @@ public class FlowManager : MonoBehaviour
     }
     private PoolManager poolMgr = null;
     //0 : move tuto 1 : shoot tuto 2 : mid boss 3 : finalboss 4 : ending
-    private static int step = 0;
+    private int step = 0;
     private Action[] stepActions = new Action[5];
     private void Awake()
     {
         poolMgr = GameManager.Instance.GetManager<PoolManager>();
         GameManager.Instance.GetManager<PoolManager>().CreatePool(soldierPrefab, 2);
-    }
-    private void Start()
-    {
-        Init();
-        NextStep();
     }
     public void Init()
     {

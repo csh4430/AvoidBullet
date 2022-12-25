@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        FlowManager.Instance.Init();
+        //FlowManager.Instance.
+        FlowManager.Instance.NextStep();
         Sound.PlayBgm(SoundType.BgmType.Tuto);
     }
 }

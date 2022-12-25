@@ -5463,7 +5463,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320470366}
-  m_LocalRotation: {x: 0.498954, y: 0.00000005376433, z: -0.00000003095436, w: 0.8666285}
+  m_LocalRotation: {x: 0.498954, y: -0.000000053764307, z: 0.000000030954347, w: 0.8666285}
   m_LocalPosition: {x: 0, y: 40, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6181,7 +6181,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.498954, y: 0.00000005376433, z: -0.00000003095436, w: 0.8666285}
+  m_LocalRotation: {x: 0.498954, y: -0.000000053764307, z: 0.000000030954347, w: 0.8666285}
   m_LocalPosition: {x: 0, y: 20.7, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6334,6 +6334,7 @@ MonoBehaviour:
   <isFinalBoss>k__BackingField: 0
   soldierPrefab: {fileID: 7152042233717601229, guid: 5f79f5013855f154e8752cf25535668b, type: 3}
   bombPrefab: {fileID: 7121328781104090065, guid: 988c9d190a94cf042bdb12d068b473b3, type: 3}
+  healPrefab: {fileID: 7499195725795310878, guid: b34f4c2af13af9e48a24962e9378685c, type: 3}
 --- !u!4 &1079298709
 Transform:
   m_ObjectHideFlags: 0
@@ -18040,6 +18041,7 @@ MonoBehaviour:
   <isFinalBoss>k__BackingField: 1
   soldierPrefab: {fileID: 7152042233717601229, guid: 5f79f5013855f154e8752cf25535668b, type: 3}
   bombPrefab: {fileID: 7121328781104090065, guid: 988c9d190a94cf042bdb12d068b473b3, type: 3}
+  healPrefab: {fileID: 7499195725795310878, guid: b34f4c2af13af9e48a24962e9378685c, type: 3}
 --- !u!4 &2005345915
 Transform:
   m_ObjectHideFlags: 0
@@ -19095,6 +19097,7 @@ MonoBehaviour:
   _rewindObject: {fileID: 2950027640019833832}
   _inGameVolume: {fileID: 6034387469700909120}
   isChanging: 0
+  isMenuOpen: 0
 --- !u!114 &6447304404105781196
 MonoBehaviour:
   m_ObjectHideFlags: 0
